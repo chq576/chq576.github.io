@@ -128,7 +128,134 @@
     </div>
 </div>
     <div class="post-content">
-    
+    <h2 id="一、核心特性"><a href="#一、核心特性" class="headerlink" title="一、核心特性"></a>一、核心特性</h2><ul>
+<li>跨平台性：支持Windows、Linux、macOS等操作系统，兼容Apache、Nginx等服务器。</li>
+<li>脚本语言：无需编译，直接由服务器解释执行。</li>
+<li>弱类型语言：变量类型无需显式声明，自动转换。</li>
+<li>面向对象与过程编程：同时支持两种编程范式，适合不同规模项目。</li>
+<li>丰富的扩展库：内置数据库操作（MySQL、PostgreSQL）、文件处理、网络通信等功能。</li>
+</ul>
+<h2 id="二、基础语法"><a href="#二、基础语法" class="headerlink" title="二、基础语法"></a>二、基础语法</h2><p>1.<strong>标记</strong></p>
+<ul>
+<li><?php ... ?></li>
+</ul>
+<ol start="2">
+<li><strong>注释</strong><ul>
+<li>&#x2F;&#x2F; 这是 PHP 单行注释</li>
+<li>&#x2F;<em>这是PHP多行注释</em>&#x2F;</li>
+</ul>
+</li>
+<li><strong>变量</strong><ul>
+<li>PHP变量<ul>
+<li>变量以 $ 符号开始，后面跟着变量的名称</li>
+<li>变量名必须以字母或者下划线字符开始</li>
+<li>变量名只能包含字母、数字以及下划线（A-z、0-9 和 _ ）</li>
+<li>变量名不能包含空格</li>
+<li>变量名是区分大小写的（$y 和 $Y 是两个不同的变量）</li>
+</ul>
+</li>
+<li>global 关键字用于函数内访问全局变量</li>
+<li>static 是函数的局部变量。每次调用该函数时，该变量将会保留着函数前一次被调用时的值。</li>
+</ul>
+</li>
+<li><strong>echo 和 print 语句</strong><ul>
+<li>echo : 可以输出一个或多个字符串</li>
+<li>print : 只允许输出一个字符串，返回值总为 1</li>
+</ul>
+</li>
+<li><strong>EOF(heredoc) 使用说明</strong><ul>
+<li>定义一个字符串的方法</li>
+</ul>
+</li>
+<li><strong>PHP 数据类型</strong><ul>
+<li>String（字符串）</li>
+<li>Integer（整型）</li>
+<li>Float（浮点型）</li>
+<li>Boolean（布尔型）</li>
+<li>Array（数组）</li>
+<li>Object（对象）</li>
+<li>NULL（空值）</li>
+<li>Resource（资源类型）</li>
+</ul>
+</li>
+<li><strong>PHP 类型比较</strong><ul>
+<li>松散比较：使用两个等号 &#x3D;&#x3D; 比较，只比较值，不比较类型。</li>
+<li>严格比较：用三个等号 &#x3D;&#x3D;&#x3D; 比较，除了比较值，也比较类型。</li>
+<li>例如，”42” 是一个字符串而 42 是一个整数。FALSE 是一个布尔值而 “FALSE” 是一个字符串。</li>
+</ul>
+</li>
+<li><strong>PHP 常量</strong><ul>
+<li>PHP 中的常量是指一旦定义后其值不能被改变的标识符。</li>
+<li>常量值被定义后，在脚本的其他任何地方都不能被改变。</li>
+<li>常量可以用 define() 函数或 const 关键字来定义。<ul>
+<li>define():define(“GREETING”, “欢迎访问 Runoob.com”)</li>
+<li>const CONSTANT_NAME &#x3D; “value”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>PHP 字符串变量</strong><ul>
+<li>并置运算符 . 用于把两个字符串值连接起来</li>
+<li>strlen() 函数返回字符串的长度（字节数)</li>
+<li>strpos() 函数用于在字符串内查找一个字符或一段指定的文本.例如：strpos(“Hello world!”,”world”)</li>
+<li>PHP String 参考手册：<a target="_blank" rel="noopener" href="https://www.runoob.com/php/php-ref-string.html">https://www.runoob.com/php/php-ref-string.html</a></li>
+</ul>
+</li>
+<li><strong>PHP 运算符</strong><ul>
+<li>在 PHP 中，赋值运算符 &#x3D; 用于给变量赋值。算术运算符 + 用于把值加在一起。</li>
+<li>组合比较符：$c &#x3D; $a &lt;&#x3D;&gt; $b<ul>
+<li>如果 $a &gt; $b, 则 $c 的值为 1。</li>
+<li>如果 $a &#x3D;&#x3D; $b, 则 $c 的值为 0。</li>
+<li>如果 $a &lt; $b, 则 $c 的值为 -1。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>语句</strong></li>
+</ol>
+<ul>
+<li>If…Else 语句</li>
+<li>Switch 语句</li>
+</ul>
+<ol start="11">
+<li><strong>数组</strong></li>
+</ol>
+<ul>
+<li>数值数组 ：$cars&#x3D;array(“Volvo”,”BMW”,”Toyota”)，获取数组的长度 - count() 函数</li>
+<li>关联数组 ：$age&#x3D;array(“Peter”&#x3D;&gt;”35”,”Ben”&#x3D;&gt;”37”,”Joe”&#x3D;&gt;”43”)<br>   foreach($age as $x&#x3D;&gt;$x_value)<br>   {<br>echo “Key&#x3D;” . $x . “, Value&#x3D;” . $x_value;<br>echo “<br>“;<br>   }</li>
+<li>多维数组 ：<a target="_blank" rel="noopener" href="https://www.runoob.com/php/php-arrays-multi.html">https://www.runoob.com/php/php-arrays-multi.html</a></li>
+</ul>
+<ol start="12">
+<li><strong>PHP 数组排序</strong></li>
+</ol>
+<ul>
+<li>sort() - 对数组进行升序排列</li>
+<li>rsort() - 对数组进行降序排列</li>
+<li>asort() - 根据关联数组的值，对数组进行-升序排列</li>
+<li>ksort() - 根据关联数组的键，对数组进行升序排列</li>
+<li>arsort() - 根据关联数组的值，对数组进行降序排列</li>
+<li>krsort() - 根据关联数组的键，对数组进行降序排列</li>
+</ul>
+<ol start="13">
+<li><strong>PHP 超级全局变量</strong></li>
+</ol>
+<ul>
+<li>$GLOBALS</li>
+<li>$_SERVER</li>
+<li>$_REQUEST</li>
+<li>$_POST</li>
+<li>$_GET</li>
+</ul>
+<ol start="14">
+<li><strong>PHP 循环</strong></li>
+</ol>
+<ul>
+<li>while - 只要指定的条件成立，则循环执行代码块</li>
+<li>do…while - 首先执行一次代码块，然后在指定的条件成立时重复这个循环</li>
+<li>for - 循环执行代码块指定的次数</li>
+<li>foreach - 根据数组中每个元素来循环代码块<br>   foreach ($array as $value)<br>   {<br>要执行代码;<br>   }<br>   foreach ($array as $key &#x3D;&gt; $value)<br>   {<br>要执行代码;<br>   }</li>
+</ul>
+
 </div> 
 
 <script>
