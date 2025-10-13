@@ -129,42 +129,31 @@
 </div>
     <div class="post-content">
     <p><img src="/source/img/HTML.png" alt="封面图"></p>
-<h1 id="代码详解"><a href="#代码详解" class="headerlink" title="代码详解"></a>代码详解</h1><!-- upload.html -->
-<ul>
-<li><!doctype html>
-<pre><code>&lt;html&gt;
-&lt;body&gt;
-&lt;h3&gt;上传文件&lt;/h3&gt;
-&lt;form action=&quot;/upload.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt; &lt;!-- 文件上传表单 --&gt;
-&lt;input type=&quot;file&quot; name=&quot;file&quot; /&gt;  &lt;!-- 文件选择框 --&gt;
-&lt;button type=&quot;submit&quot;&gt;上传&lt;/button&gt; &lt;!-- 提交按钮 --&gt;
-&lt;/form&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-&lt;!-- login.html --&gt;     &lt;!-- 登录页面 --&gt;
-&lt;!doctype html&gt;  &lt;!-- 登录页面 --&gt;
-&lt;html&gt;
-&lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Login&lt;/title&gt;&lt;/head&gt;&lt;!--  页面头部 --&gt;
-&lt;body&gt;
-&lt;h3&gt;登录&lt;/h3&gt;
-&lt;form action=&quot;/login.php&quot; method=&quot;post&quot;&gt; &lt;!-- 表单提交到 login.php --&gt;
-&lt;label&gt;用户名: &lt;input type=&quot;text&quot; name=&quot;username&quot; /&gt;&lt;/label&gt;&lt;br&gt;  &lt;!-- 用户名输入框 --&gt;
-&lt;label&gt;密码: &lt;input type=&quot;password&quot; name=&quot;password&quot; /&gt;&lt;/label&gt;&lt;br&gt;  &lt;!-- 密码输入框 --&gt;
-&lt;button type=&quot;submit&quot;&gt;登录&lt;/button&gt; &lt;!-- 提交按钮 --&gt;
-&lt;/form&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-&lt;!-- upload.html --&gt;
-&lt;!doctype html&gt;
-&lt;html&gt;
-&lt;body&gt;
-&lt;h3&gt;上传文件&lt;/h3&gt;
-&lt;form action=&quot;/upload.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt; &lt;!-- 文件上传表单 --&gt;
-&lt;input type=&quot;file&quot; name=&quot;file&quot; /&gt;  &lt;!-- 文件选择框 --&gt;
-&lt;button type=&quot;submit&quot;&gt;上传&lt;/button&gt; &lt;!-- 提交按钮 --&gt;
-&lt;/form&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+<h1 id="代码详解"><a href="#代码详解" class="headerlink" title="代码详解"></a>代码详解</h1><ul>
+<li><!-- login.html -->     <!-- 登录页面 -->
+<pre><code>  &lt;!doctype html&gt;  &lt;!-- 登录页面 --&gt;
+  &lt;html&gt;
+  &lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;Login&lt;/title&gt;&lt;/head&gt;&lt;!--  页面头部 --&gt;
+  &lt;body&gt;
+  &lt;h3&gt;登录&lt;/h3&gt;
+  &lt;form action=&quot;/login.php&quot; method=&quot;post&quot;&gt; &lt;!-- 表单提交到 login.php --&gt;
+  &lt;label&gt;用户名: &lt;input type=&quot;text&quot; name=&quot;username&quot; /&gt;&lt;/label&gt;&lt;br&gt;  &lt;!-- 用户名输入框 --&gt;
+  &lt;label&gt;密码: &lt;input type=&quot;password&quot; name=&quot;password&quot; /&gt;&lt;/label&gt;&lt;br&gt;  &lt;!-- 密码输入框 --&gt;
+  &lt;button type=&quot;submit&quot;&gt;登录&lt;/button&gt; &lt;!-- 提交按钮 --&gt;
+  &lt;/form&gt;
+  &lt;/body&gt;
+  &lt;/html&gt;
+  &lt;!-- upload.html --&gt;
+  &lt;!doctype html&gt;
+  &lt;html&gt;
+  &lt;body&gt;
+  &lt;h3&gt;上传文件&lt;/h3&gt;
+  &lt;form action=&quot;/upload.php&quot; method=&quot;post&quot; enctype=&quot;multipart/form-data&quot;&gt; &lt;!-- 文件上传表单 --&gt;
+  &lt;input type=&quot;file&quot; name=&quot;file&quot; /&gt;  &lt;!-- 文件选择框 --&gt;
+  &lt;button type=&quot;submit&quot;&gt;上传&lt;/button&gt; &lt;!-- 提交按钮 --&gt;
+  &lt;/form&gt;
+  &lt;/body&gt;
+  &lt;/html&gt;
 </code></pre>
 </li>
 <li><!DOCTYPE html> 声明为 HTML5 文档</li>
@@ -186,6 +175,17 @@
  <label>密码: <input type="password" name="password" /></label><br>  <!-- 密码输入框 -->
  <button type="submit">登录</button> <!-- 提交按钮 -->
  </form>
+</body>
+</html>
+<!-- upload.html -->
+<!doctype html>
+<html>
+<body>
+<h3>上传文件</h3>
+<form action="/upload.php" method="post" enctype="multipart/form-data"> <!-- 文件上传表单 -->
+<input type="file" name="file" />  <!-- 文件选择框 -->
+<button type="submit">上传</button> <!-- 提交按钮 -->
+</form>
 </body>
 </html>
 
