@@ -177,7 +177,7 @@
 <li>打开Git Bash，运行以下命令设置全局用户名和邮箱（替换为你的GitHub账号信息）：git config –global user.name “你的GitHub用户名”git config –global user.email “你的GitHub绑定邮箱”</li>
 <li>生成SSH密钥（用于本地与GitHub的安全连接）：ssh-keygen -t rsa -C “你的GitHub绑定邮箱”按回车键默认保存路径（C:\Users\你的用户名.ssh\id_rsa），无需设置密码。<br>-复制SSH公钥：运行clip &lt; ~&#x2F;.ssh&#x2F;id_rsa.pub（自动复制），或打开id_rsa.pub文件（文本格式）手动复制内容。</li>
 <li>配置GitHub SSH密钥：登录GitHub，点击头像→“Settings”→“SSH and GPG keys”→“New SSH key”，粘贴公钥并命名（如“Hexo Blog Key”），点击“Add SSH key”。</li>
-<li>验证连接：运行ssh -T <a href="mailto:&#103;&#x69;&#x74;&#x40;&#x67;&#x69;&#116;&#104;&#x75;&#98;&#x2e;&#x63;&#x6f;&#109;">git@github.com</a>，出现“Hi 用户名! You’ve successfully authenticated…”则表示连接成功。</li>
+<li>验证连接：运行ssh -T <a href="mailto:&#x67;&#105;&#116;&#x40;&#103;&#105;&#x74;&#104;&#117;&#98;&#46;&#99;&#111;&#109;">git@github.com</a>，出现“Hi 用户名! You’ve successfully authenticated…”则表示连接成功。</li>
 </ul>
 </li>
 </ol>
@@ -199,7 +199,7 @@
 <h2 id="第四步：配置Hexo关联Github"><a href="#第四步：配置Hexo关联Github" class="headerlink" title="第四步：配置Hexo关联Github"></a>第四步：配置Hexo关联Github</h2><ol>
 <li><strong>修改Hexo配置文件</strong><ul>
 <li>打开本地博客目录中的_config.yml文件（Hexo的核心配置文件，用文本编辑器如VS Code打开）。</li>
-<li>找到deploy（部署）部分，修改为以下内容（替换为你的GitHub仓库SSH地址，可在仓库页面点击“Code”→“SSH”复制）：<br>deploy:<br>type: git<br>repo: <a href="mailto:&#103;&#x69;&#116;&#64;&#103;&#105;&#x74;&#104;&#x75;&#98;&#46;&#x63;&#111;&#109;">git@github.com</a>:你的用户名&#x2F;你的用户名.github.io.git<br>branch: main  # 若GitHub默认分支是master，改为master</li>
+<li>找到deploy（部署）部分，修改为以下内容（替换为你的GitHub仓库SSH地址，可在仓库页面点击“Code”→“SSH”复制）：<br>deploy:<br>type: git<br>repo: <a href="mailto:&#103;&#x69;&#x74;&#64;&#x67;&#105;&#x74;&#104;&#x75;&#98;&#46;&#x63;&#x6f;&#x6d;">git@github.com</a>:你的用户名&#x2F;你的用户名.github.io.git<br>branch: main  # 若GitHub默认分支是master，改为master</li>
 <li>保存并关闭_config.yml文件。</li>
 </ul>
 </li>
