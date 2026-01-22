@@ -35,18 +35,21 @@
 
   
   
-    <meta name="description" content="愿你永远有打破僵局的勇气">
+    <meta name="description" content="Pass-01(前端验证)在BP里面把jpg修改成php 12345678910111213141516function checkFile() &#123;    var file &#x3D; document.getElementsByName(&#x27;upload_file&#x27;)[0].value;    if (file &#x3D;&#x3D; null || file &#x3D;&#x3D; &quot;&quot;)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UPLOAD">
 <meta property="og:url" content="https://chq576.github.io/2026/01/20/UPLOAD/index.html">
 <meta property="og:site_name" content="尼采日记">
-<meta property="og:description" content="愿你永远有打破僵局的勇气">
+<meta property="og:description" content="Pass-01(前端验证)在BP里面把jpg修改成php 12345678910111213141516function checkFile() &#123;    var file &#x3D; document.getElementsByName(&#x27;upload_file&#x27;)[0].value;    if (file &#x3D;&#x3D; null || file &#x3D;&#x3D; &quot;&quot;)">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chq576.github.io/img/01.png">
+<meta property="og:image" content="https://chq576.github.io/img/001.png">
 <meta property="article:published_time" content="2026-01-20T11:40:25.000Z">
-<meta property="article:modified_time" content="2026-01-20T11:40:25.260Z">
+<meta property="article:modified_time" content="2026-01-21T14:55:40.943Z">
 <meta property="article:author" content="cc">
 <meta property="article:tag" content="山竹&#39;菠萝">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chq576.github.io/img/01.png">
   
   
     <link rel="alternate" href="/atom.xml" title="尼采日记" type="application/atom+xml">
@@ -239,12 +242,12 @@
           <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
   
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Pass-01-%E5%89%8D%E7%AB%AF%E9%AA%8C%E8%AF%81"><span class="toc-number">1.</span> <span class="toc-text">Pass-01(前端验证)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pass-02"><span class="toc-number">2.</span> <span class="toc-text">Pass-02</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pass-03-%E9%BB%91%E5%90%8D%E5%8D%95%E9%AA%8C%E8%AF%81"><span class="toc-number">3.</span> <span class="toc-text">Pass-03(黑名单验证)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pass-04-%E9%BB%91%E5%90%8D%E5%8D%95%E9%AA%8C%E8%AF%81"><span class="toc-number">4.</span> <span class="toc-text">Pass-04(黑名单验证)</span></a></li></ol>
   
 </div>
 </div>
           <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
-  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="cc" class="lazyload">
+  <img data-src="/avatar/hmbb.jpg" data-sizes="auto" alt="cc" class="lazyload">
   <div class="sidebar-author-name">cc</div>
   <div class="sidebar-description">愿你永远有打破僵局的勇气</div>
 </div>
@@ -338,7 +341,7 @@
       <div class="article-date">
   <span class="article-date-link icon-calendar" data-aos="zoom-in">
     <time datetime="2026-01-20T11:40:25.000Z" itemprop="datePublished">2026-01-20</time>
-    <time style="display: none;" id="post-update-time">2026-01-20</time>
+    <time style="display: none;" id="post-update-time">2026-01-21</time>
   </span>
   
 </div>
@@ -353,7 +356,32 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
       
-        
+        <h1 id="Pass-01-前端验证"><a href="#Pass-01-前端验证" class="headerlink" title="Pass-01(前端验证)"></a>Pass-01(前端验证)</h1><p>在BP里面把jpg修改成php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkFile</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> file = document.<span class="title function_ invoke__">getElementsByName</span>(<span class="string">&#x27;upload_file&#x27;</span>)[<span class="number">0</span>].value;</span><br><span class="line">    <span class="keyword">if</span> (file == <span class="literal">null</span> || file == <span class="string">&quot;&quot;</span>) &#123;</span><br><span class="line">        <span class="title function_ invoke__">alert</span>(<span class="string">&quot;请选择要上传的文件!&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//定义允许上传的文件类型</span></span><br><span class="line">    <span class="keyword">var</span> allow_ext = <span class="string">&quot;.jpg|.png|.gif&quot;</span>;</span><br><span class="line">    <span class="comment">//提取上传文件的类型</span></span><br><span class="line">    <span class="keyword">var</span> ext_name = file.<span class="title function_ invoke__">substring</span>(file.<span class="title function_ invoke__">lastIndexOf</span>(<span class="string">&quot;.&quot;</span>));</span><br><span class="line">    <span class="comment">//判断上传文件类型是否允许上传</span></span><br><span class="line">    <span class="keyword">if</span> (allow_ext.<span class="title function_ invoke__">indexOf</span>(ext_name + <span class="string">&quot;|&quot;</span>) == -<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> errMsg = <span class="string">&quot;该文件不允许上传，请上传&quot;</span> + allow_ext + <span class="string">&quot;类型的文件,当前文件类型为：&quot;</span> + ext_name;</span><br><span class="line">        <span class="title function_ invoke__">alert</span>(errMsg);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>1. 用户选择文件 → <strong>前端验证</strong>（检查扩展名、大小等）→ 如果不合法，直接在浏览器提示。<br><img src="/./img/01.png" alt="图片"></p>
+</blockquote>
+<blockquote>
+<p>2. 如果前端验证通过 → 文件被发送到服务器 → <strong>后端验证</strong>（再次检查文件类型、大小、甚至文件内容）。<br><img src="/./img/001.png" alt="图片"></p>
+</blockquote>
+<blockquote>
+<p>3. 如果后端验证通过 → 文件被保存到服务器或云存储；如果不通过 → 返回错误给前端。</p>
+</blockquote>
+<h1 id="Pass-02"><a href="#Pass-02" class="headerlink" title="Pass-02"></a>Pass-02</h1><p>提示文件类型不正确</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">Content-Type: application/octet-stream(表示二进制流文件)</span><br><span class="line">````</span><br><span class="line">```php</span><br><span class="line">$is_upload = false;</span><br><span class="line">$msg = null;</span><br><span class="line">if (isset($_POST[&#x27;submit&#x27;])) &#123;</span><br><span class="line">    if (file_exists(UPLOAD_PATH)) &#123;</span><br><span class="line">        if (($_FILES[&#x27;upload_file&#x27;][&#x27;type&#x27;] == &#x27;image/jpeg&#x27;) || ($_FILES[&#x27;upload_file&#x27;][&#x27;type&#x27;] == &#x27;image/png&#x27;) || ($_FILES[&#x27;upload_file&#x27;][&#x27;type&#x27;] == &#x27;image/gif&#x27;)) &#123;</span><br><span class="line">            $temp_file = $_FILES[&#x27;upload_file&#x27;][&#x27;tmp_name&#x27;];</span><br><span class="line">            $img_path = UPLOAD_PATH . &#x27;/&#x27; . $_FILES[&#x27;upload_file&#x27;][&#x27;name&#x27;]            </span><br><span class="line">            if (move_uploaded_file($temp_file, $img_path)) &#123;</span><br><span class="line">                $is_upload = true;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                $msg = &#x27;上传出错！&#x27;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            $msg = &#x27;文件类型不正确，请重新上传！&#x27;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        $msg = UPLOAD_PATH.&#x27;文件夹不存在,请手工创建！&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;//三种，任选一种文件类型即可</span><br></pre></td></tr></table></figure>
+<h1 id="Pass-03-黑名单验证"><a href="#Pass-03-黑名单验证" class="headerlink" title="Pass-03(黑名单验证)"></a>Pass-03(黑名单验证)</h1><p>不允许上传.asp,.aspx,.php,.jsp后缀文件！ 上传phtml<br>在apache中的配置文件中，我们可以看到他会将 .php  .php3  .phtml 这几个后缀当做php文件进行解析，那么我们上传.php3文件，刚过可以绕过黑名单，并且文件可以被解析</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$is_upload</span> = <span class="literal">false</span>;</span><br><span class="line"><span class="variable">$msg</span> = <span class="literal">null</span>;<span class="comment">//初始化变量</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;submit&#x27;</span>]))<span class="comment">//点击提交按钮则进入处理流程</span></span><br><span class="line"> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_ invoke__">file_exists</span>(UPLOAD_PATH)) &#123;</span><br><span class="line">        <span class="variable">$deny_ext</span> = <span class="keyword">array</span>(<span class="string">&#x27;.asp&#x27;</span>,<span class="string">&#x27;.aspx&#x27;</span>,<span class="string">&#x27;.php&#x27;</span>,<span class="string">&#x27;.jsp&#x27;</span>);</span><br><span class="line">        <span class="variable">$file_name</span> = <span class="title function_ invoke__">trim</span>(<span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>]);<span class="comment">//trim去掉前后空格</span></span><br><span class="line">        <span class="variable">$file_name</span> = <span class="title function_ invoke__">deldot</span>(<span class="variable">$file_name</span>);<span class="comment">//删除文件名末尾的点</span></span><br><span class="line">        <span class="variable">$file_ext</span> = <span class="title function_ invoke__">strrchr</span>(<span class="variable">$file_name</span>, <span class="string">&#x27;.&#x27;</span>);<span class="comment">//</span></span><br><span class="line">        <span class="variable">$file_ext</span> = <span class="title function_ invoke__">strtolower</span>(<span class="variable">$file_ext</span>); <span class="comment">//转换为小写</span></span><br><span class="line">        <span class="variable">$file_ext</span> = <span class="title function_ invoke__">str_ireplace</span>(<span class="string">&#x27;::$DATA&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="variable">$file_ext</span>);<span class="comment">//去除字符串::$DATA</span></span><br><span class="line">        <span class="variable">$file_ext</span> = <span class="title function_ invoke__">trim</span>(<span class="variable">$file_ext</span>); <span class="comment">//收尾去空</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!<span class="title function_ invoke__">in_array</span>(<span class="variable">$file_ext</span>, <span class="variable">$deny_ext</span>)) &#123;</span><br><span class="line">            <span class="variable">$temp_file</span> = <span class="variable">$_FILES</span>[<span class="string">&#x27;upload_file&#x27;</span>][<span class="string">&#x27;tmp_name&#x27;</span>];</span><br><span class="line">            <span class="variable">$img_path</span> = UPLOAD_PATH.<span class="string">&#x27;/&#x27;</span>.<span class="title function_ invoke__">date</span>(<span class="string">&quot;YmdHis&quot;</span>).<span class="title function_ invoke__">rand</span>(<span class="number">1000</span>,<span class="number">9999</span>).<span class="variable">$file_ext</span>;            </span><br><span class="line">            <span class="keyword">if</span> (<span class="title function_ invoke__">move_uploaded_file</span>(<span class="variable">$temp_file</span>,<span class="variable">$img_path</span>)) &#123;</span><br><span class="line">                 <span class="variable">$is_upload</span> = <span class="literal">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="variable">$msg</span> = <span class="string">&#x27;上传出错！&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable">$msg</span> = <span class="string">&#x27;不允许上传.asp,.aspx,.php,.jsp后缀文件！&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="variable">$msg</span> = UPLOAD_PATH . <span class="string">&#x27;文件夹不存在,请手工创建！&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p> <strong>strrchr($file_name, ‘.’)</strong> ：获取最后一个  .  后面的扩展名（比如  123.php  会得到  .php ）。</p>
+</li>
+<li><p> <strong>strtolower($file_ext)</strong> ：把扩展名转成小写，防止用  123.PHP  这种大小写混合的方式绕过。</p>
+</li>
+<li><p> <strong>str_ireplace(‘::$DATA’, ‘’, $file_ext)</strong> ：去掉 Windows 系统特有的  ::$DATA  后缀，防止用  123.php::$DATA  这种方式绕过。</p>
+</li>
+<li><p>最后一次 <strong>trim($file_ext)</strong> ：确保扩展名前后没有多余的空格。</p>
+</li>
+</ul>
+<h1 id="Pass-04-黑名单验证"><a href="#Pass-04-黑名单验证" class="headerlink" title="Pass-04(黑名单验证)"></a>Pass-04(黑名单验证)</h1>
       
     </div>
     <footer class="article-footer">
@@ -363,7 +391,7 @@
     <p><strong><span class="icon-link icon"></span>Permalink: </strong><a href="https://chq576.github.io/2026/01/20/UPLOAD/">https://chq576.github.io/2026/01/20/UPLOAD/</a></p>
     <p><strong><span class="icon-pencil icon"></span>Title: </strong>「UPLOAD」</p>
     <p><strong><span class="icon-calendar icon"></span>Published: </strong>2026-01-20 19:40:25</p>
-    <p><strong><span class="icon-calendar icon"></span>Updated: </strong>2026-01-20 19:40:25</p>
+    <p><strong><span class="icon-calendar icon"></span>Updated: </strong>2026-01-21 22:55:40</p>
     <p><strong><span class="icon-copyright icon"></span>License: </strong>All articles on this blog are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> license agreement unless otherwise stated. Please indicate the source when reprinting!</p>
     <span class="icon-creative-commons article-copyright-bg"></span>
   </blockquote>
@@ -467,10 +495,10 @@
     
       <div>
         <span class="icon-brush"></span>
-        5.8k
+        6.6k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        00:32
+        00:35
       </div>
     
     
@@ -503,12 +531,12 @@
         <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
 <div class="sidebar-toc-wrapper toc-div-class" >
   
-    
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Pass-01-%E5%89%8D%E7%AB%AF%E9%AA%8C%E8%AF%81"><span class="toc-number">1.</span> <span class="toc-text">Pass-01(前端验证)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pass-02"><span class="toc-number">2.</span> <span class="toc-text">Pass-02</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pass-03-%E9%BB%91%E5%90%8D%E5%8D%95%E9%AA%8C%E8%AF%81"><span class="toc-number">3.</span> <span class="toc-text">Pass-03(黑名单验证)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Pass-04-%E9%BB%91%E5%90%8D%E5%8D%95%E9%AA%8C%E8%AF%81"><span class="toc-number">4.</span> <span class="toc-text">Pass-04(黑名单验证)</span></a></li></ol>
   
 </div>
 </div>
         <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
-  <img data-src="/avatar/avatar.webp" data-sizes="auto" alt="cc" class="lazyload">
+  <img data-src="/avatar/hmbb.jpg" data-sizes="auto" alt="cc" class="lazyload">
   <div class="sidebar-author-name">cc</div>
   <div class="sidebar-description">愿你永远有打破僵局的勇气</div>
 </div>
@@ -663,9 +691,9 @@
           url: "https://chq576.github.io/2026/01/20/UPLOAD/",
           excerpt: "",
           description: "",
-          stripContent: "",
+          stripContent: "Pass-01(前端验证)在BP里面把jpg修改成php 12345678910111213141516function checkFile() &amp;#123;    var file = document.getElementsByName(&amp;#x27;upload_file&amp;#x27;)[0].value;    if (file == null || file == &amp;quot;&amp;quot;) &amp;#123;        alert(&amp;quot;请选择要上传的文件!&amp;quot;);     ",
           date: "Tue Jan 20 2026 19:40:25 GMT+0800",
-          updated: "Tue Jan 20 2026 19:40:25 GMT+0800",
+          updated: "Wed Jan 21 2026 22:55:40 GMT+0800",
           cover: "/images/yh.jpg",
         };
       </script>
