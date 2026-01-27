@@ -46,7 +46,7 @@
 <meta property="og:image" content="https://chq576.github.io/img/001.png">
 <meta property="og:image" content="https://chq576.github.io/img/00.png">
 <meta property="article:published_time" content="2026-01-20T11:40:25.000Z">
-<meta property="article:modified_time" content="2026-01-26T15:41:01.447Z">
+<meta property="article:modified_time" content="2026-01-27T11:01:25.767Z">
 <meta property="article:author" content="cc">
 <meta property="article:tag" content="章鱼哥喜欢海绵宝宝">
 <meta name="twitter:card" content="summary">
@@ -342,7 +342,7 @@
       <div class="article-date">
   <span class="article-date-link icon-calendar" data-aos="zoom-in">
     <time datetime="2026-01-20T11:40:25.000Z" itemprop="datePublished">2026-01-20</time>
-    <time style="display: none;" id="post-update-time">2026-01-26</time>
+    <time style="display: none;" id="post-update-time">2026-01-27</time>
   </span>
   
 </div>
@@ -382,7 +382,32 @@
 <li><p>最后一次 <strong>trim($file_ext)</strong> ：确保扩展名前后没有多余的空格。</p>
 </li>
 </ul>
-<h1 id="Pass-04-htaccess"><a href="#Pass-04-htaccess" class="headerlink" title="Pass-04(.htaccess)"></a>Pass-04(.htaccess)</h1><h1 id="Pass-05-user-ini"><a href="#Pass-05-user-ini" class="headerlink" title="Pass-05(.user.ini)"></a>Pass-05(.user.ini)</h1><h1 id="Pass-06-大小写绕过"><a href="#Pass-06-大小写绕过" class="headerlink" title="Pass-06(大小写绕过)"></a>Pass-06(大小写绕过)</h1><h1 id="Pass-07-空格绕过"><a href="#Pass-07-空格绕过" class="headerlink" title="Pass-07(空格绕过)"></a>Pass-07(空格绕过)</h1><blockquote>
+<h1 id="Pass-04-htaccess"><a href="#Pass-04-htaccess" class="headerlink" title="Pass-04(.htaccess)"></a>Pass-04(.htaccess)</h1><p>首先创建一个.htaccess文件（文件名就为.htaccess）内容如下</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;FilesMatch <span class="string">&quot;123.jpg&quot;</span>&gt;</span><br><span class="line">SetHandler application/x-httpd-php</span><br><span class="line">&lt;/FilesMatch&gt;</span><br></pre></td></tr></table></figure>
+<p>意思就是如果文件里面有一个后缀为.jpg的文件，他就会被解析成.jpg。先上传一个123.jpg文件，然后上传这个.htaccess，再访问1.png，完美通关。</p>
+<blockquote>
+<p>概述来说，htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。通过htaccess文件，可以帮我们实现：网页301重定向、自定义404错误页面、改变文件扩展名、允许&#x2F;阻止特定的用户或者目录的访问、禁止目录列表、配置默认文档等功能。<br>Unix、Linux系统或者是任何版本的ApacheWeb服务器都是支持.htaccess的，但是有的主机服务商可能不允许你自定义自己的.htaccess文件。<br>启用.htaccess，需要修改httpd.conf，启用AllowOverride，并可以用AllowOverride限制特定命令的使用。如果需要使用.htaccess以外的其他文件名，可以用AccessFileName指令来改变。例如，需要使用.config，则可以在服务器配置文件中按以下方法配置：AccessFileName .config 。<br>笼统地说，.htaccess可以帮我们实现包括：文件夹密码保护、用户自动重定向、自定义错误页面、改变你的文件扩展名、封禁特定IP地址的用户、只允许特定IP地址的用户、禁止目录列表，以及使用其他文件作为index文件等一些功能。</p>
+</blockquote>
+<p><strong>漏洞原理</strong>:利用上传到服务器上的.htaccess文件修改当前目录下的解析规则<br><strong>形成条件</strong><br>1.php5.6以下不带nts的版本<br>2.服务器没有禁止.htaccess文件的上传，且服务商允许用户使用自定义.htaccess文件<br>（1）.htaccess参数<br>常见配法有以下几种：<br>AddHandler php5-script .jpg<br>AddType application&#x2F;x-httpd-php .jpg<br>SetHandler application&#x2F;x-httpd-php</p>
+<ul>
+<li>Sethandler 将该目录及子目录的所有文件均映射为php文件类型。</li>
+<li>Addhandler 使用 php5-script 处理器来解析所匹配到的文件。</li>
+<li>AddType 将特定扩展名文件映射为php文件类型。</li>
+</ul>
+<h1 id="Pass-05-user-ini"><a href="#Pass-05-user-ini" class="headerlink" title="Pass-05(.user.ini)"></a>Pass-05(.user.ini)</h1><p><strong>配置文件详解</strong></p>
+<blockquote>
+<p>.htaccess<br>作用：分布式配置文件，一般用于URl 重写，认证 访问控制等<br>作用范围：特定目录（一般是网站根目录）及其子目录<br>优先级：较高，可覆盖apache的主要配置文件（httpd-conf）<br>生效方式：修改后立刻生效</p>
+</blockquote>
+<blockquote>
+<p>httpd-conf<br>作用：包含 Apache HTTP 服务器全局行为和默认设置<br>作用范围：整个服务器<br>优先级：较低<br>生效方式：管理员权限，重启服务器后生效</p>
+</blockquote>
+<blockquote>
+<p>.user.ini<br>作用：特定于用户或特定目录的配置文件，通常位于web应用程序根目录下。<br>它作用于覆盖或追加全局配置文件（如 php.ini）中的php配置选项<br>作用范围：存放该文件的目录以及其子目录<br>优先级：较高，可以覆盖php.ini<br>生效方式：立刻生效</p>
+</blockquote>
+<blockquote>
+<p>php.ini<br>作用：存储了对整个php环境生效的配置文件，它通常位于php安装目录中，<br>作用范围：所有运行在该php环境中的php请求<br>优先级：较低<br>生效方式：重启php或web服务器<br>加载方式：会首先加载php.ini&#x2F;httpd-conf中的配置文件，然后，如果某个目录下存在 .user.ini&#x2F;.htaccess文件，服务器会在处理请求时检查该目录，并覆盖相应的配置项</p>
+</blockquote>
+<h1 id="Pass-06-大小写绕过"><a href="#Pass-06-大小写绕过" class="headerlink" title="Pass-06(大小写绕过)"></a>Pass-06(大小写绕过)</h1><h1 id="Pass-07-空格绕过"><a href="#Pass-07-空格绕过" class="headerlink" title="Pass-07(空格绕过)"></a>Pass-07(空格绕过)</h1><blockquote>
 <p>利用 PHP 和 Windows 环境的叠加特性 windows系统自动删除文件名后缀的空格绕过黑名单</p>
 </blockquote>
 <h1 id="Pass-08-点绕过"><a href="#Pass-08-点绕过" class="headerlink" title="Pass-08(点绕过)"></a>Pass-08(点绕过)</h1><h1 id="Pass-09-DATA"><a href="#Pass-09-DATA" class="headerlink" title="Pass-09(::$DATA)"></a>Pass-09(::$DATA)</h1><blockquote>
@@ -420,7 +445,7 @@
     <p><strong><span class="icon-link icon"></span>Permalink: </strong><a href="https://chq576.github.io/2026/01/20/UPLOAD/">https://chq576.github.io/2026/01/20/UPLOAD/</a></p>
     <p><strong><span class="icon-pencil icon"></span>Title: </strong>「UPLOAD」</p>
     <p><strong><span class="icon-calendar icon"></span>Published: </strong>2026-01-20 19:40:25</p>
-    <p><strong><span class="icon-calendar icon"></span>Updated: </strong>2026-01-26 23:41:01</p>
+    <p><strong><span class="icon-calendar icon"></span>Updated: </strong>2026-01-27 19:01:25</p>
     <p><strong><span class="icon-copyright icon"></span>License: </strong>All articles on this blog are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> license agreement unless otherwise stated. Please indicate the source when reprinting!</p>
     <span class="icon-creative-commons article-copyright-bg"></span>
   </blockquote>
@@ -524,10 +549,10 @@
     
       <div>
         <span class="icon-brush"></span>
-        7.6k
+        8.5k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        00:39
+        00:43
       </div>
     
     
@@ -726,7 +751,7 @@
           description: "",
           stripContent: "Pass-01(前端验证)在BP里面把jpg修改成php 12345678910111213141516function checkFile() &amp;#123;    var file = document.getElementsByName(&amp;#x27;upload_file&amp;#x27;)[0].value;    if (file == null || file == &amp;quot;&amp;quot;) &amp;#123;        alert(&amp;quot;请选择要上传的文件!&amp;quot;);     ",
           date: "Tue Jan 20 2026 19:40:25 GMT+0800",
-          updated: "Mon Jan 26 2026 23:41:01 GMT+0800",
+          updated: "Tue Jan 27 2026 19:01:25 GMT+0800",
           cover: "/images/yh.jpg",
         };
       </script>
