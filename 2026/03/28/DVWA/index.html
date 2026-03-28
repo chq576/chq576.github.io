@@ -35,12 +35,12 @@
 
   
   
-    <meta name="description" content="Brute Force密码暴力破解 Command Injection命令连接符|符号|执行逻辑||—|—|	|;	|顺序执行，前面命令无论成功失败，后面都执行||&amp;	|后台任务符号，后台并行执行，前后命令同时跑||&amp;&amp;	|前成功后执行|	| |	|管道符，前面输出作为后面输入，当它失败后，会执行另一条命令|||||前面失败，才执行后面|	|\n&#x2F;%0a	|相当于">
+    <meta name="description" content="Brute Force密码暴力破解 Command Injection 12345678命令连接符；：顺序执行，前面命令无论成功失败，后面都执行|&amp;：后台任务符号，后台并行执行，前后命令同时跑|&amp;&amp;：前成功后执行	|：管道符，前面输出作为后面输入，当它失败后，会执行另一条命令||：前面失败，才执行后面\n&#x2F;%0a：相当于回车，另起一行执行&quot;双引号,&#x27;单引">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DVWA">
 <meta property="og:url" content="https://chq576.github.io/2026/03/28/DVWA/index.html">
 <meta property="og:site_name" content="江之岛">
-<meta property="og:description" content="Brute Force密码暴力破解 Command Injection命令连接符|符号|执行逻辑||—|—|	|;	|顺序执行，前面命令无论成功失败，后面都执行||&amp;	|后台任务符号，后台并行执行，前后命令同时跑||&amp;&amp;	|前成功后执行|	| |	|管道符，前面输出作为后面输入，当它失败后，会执行另一条命令|||||前面失败，才执行后面|	|\n&#x2F;%0a	|相当于">
+<meta property="og:description" content="Brute Force密码暴力破解 Command Injection 12345678命令连接符；：顺序执行，前面命令无论成功失败，后面都执行|&amp;：后台任务符号，后台并行执行，前后命令同时跑|&amp;&amp;：前成功后执行	|：管道符，前面输出作为后面输入，当它失败后，会执行另一条命令||：前面失败，才执行后面\n&#x2F;%0a：相当于回车，另起一行执行&quot;双引号,&#x27;单引">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://chq576.github.io/img/222.png">
 <meta property="og:image" content="https://chq576.github.io/img/dada1.png">
@@ -48,7 +48,7 @@
 <meta property="og:image" content="https://chq576.github.io/img/alert.png">
 <meta property="og:image" content="https://chq576.github.io/img/m.png">
 <meta property="article:published_time" content="2026-03-28T03:03:33.000Z">
-<meta property="article:modified_time" content="2026-03-28T05:53:29.948Z">
+<meta property="article:modified_time" content="2026-03-28T06:00:15.309Z">
 <meta property="article:author" content="cc">
 <meta property="article:tag" content="章鱼哥喜欢海绵宝宝">
 <meta name="twitter:card" content="summary">
@@ -360,10 +360,8 @@
       
       
         <h1 id="Brute-Force"><a href="#Brute-Force" class="headerlink" title="Brute Force"></a>Brute Force</h1><p>密码暴力破解</p>
-<h1 id="Command-Injection"><a href="#Command-Injection" class="headerlink" title="Command Injection"></a>Command Injection</h1><p><img src="/./img/222.png" alt="图片"><br>命令连接符<br>|符号|执行逻辑|<br>|—|—|	<br>|;	|顺序执行，前面命令无论成功失败，后面都执行|<br>|&amp;	|后台任务符号，后台并行执行，前后命令同时跑|<br>|&amp;&amp;	|前成功后执行|	<br>| |	|管道符，前面输出作为后面输入，当它失败后，会执行另一条命令|<br>||||前面失败，才执行后面|	<br>|\n&#x2F;%0a	|相当于回车，另起一行执行|</p>
-<blockquote>
-<p>“,’反引号<br>当一个命令被解析时，会先执行反引号之间的操作，如echo ‘ls &#x2F;‘,这是命令替换 ,$(command)与反引号相似</p>
-</blockquote>
+<h1 id="Command-Injection"><a href="#Command-Injection" class="headerlink" title="Command Injection"></a>Command Injection</h1><p><img src="/./img/222.png" alt="图片"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">命令连接符</span><br><span class="line">；：顺序执行，前面命令无论成功失败，后面都执行|</span><br><span class="line">&amp;：后台任务符号，后台并行执行，前后命令同时跑|</span><br><span class="line">&amp;&amp;：前成功后执行	</span><br><span class="line">|：管道符，前面输出作为后面输入，当它失败后，会执行另一条命令</span><br><span class="line">||：前面失败，才执行后面</span><br><span class="line">\n/%0a：相当于回车，另起一行执行</span><br><span class="line">&quot;双引号,&#x27;单引号：当一个命令被解析时，会先执行反引号之间的操作，如echo &#x27;ls /&#x27;,这是命令替换 ,$(command)与反引号相似</span><br></pre></td></tr></table></figure>
 <h1 id="File-Inclusion"><a href="#File-Inclusion" class="headerlink" title="File Inclusion"></a>File Inclusion</h1><p>服务器包含文件时，不管文件后缀是否是php，都会尝试当做php文件执行，如果文件内容确为php，则会正常执行并返回结果，如果不是，则会原封不动地打印文件内容，所以文件包含漏洞常常会导致任意文件读取与任意命令执行。</p>
 <h1 id="CSRF（跨站请求伪造）"><a href="#CSRF（跨站请求伪造）" class="headerlink" title="CSRF（跨站请求伪造）"></a>CSRF（跨站请求伪造）</h1><p>CSRF（Cross-Site Request Forgery，跨站请求伪造） 是一种利用用户<strong>已登录状态</strong>，诱导其浏览器<strong>向目标网站</strong>发送非预期、非授权请求的 Web 安全漏洞，也叫 “一键攻击” 或 “会话劫持”。攻击者无需窃取用户密码，仅需让用户在登录目标网站时访问恶意页面，即可冒充用户执行转账、改密、删帖等敏感操作。</p>
 <ol>
@@ -536,7 +534,7 @@
     <p><strong><span class="icon-link icon"></span>Permalink: </strong><a href="https://chq576.github.io/2026/03/28/DVWA/">https://chq576.github.io/2026/03/28/DVWA/</a></p>
     <p><strong><span class="icon-pencil icon"></span>Title: </strong>「DVWA」</p>
     <p><strong><span class="icon-calendar icon"></span>Published: </strong>2026-03-28 11:03:33</p>
-    <p><strong><span class="icon-calendar icon"></span>Updated: </strong>2026-03-28 13:53:29</p>
+    <p><strong><span class="icon-calendar icon"></span>Updated: </strong>2026-03-28 14:00:15</p>
     <p><strong><span class="icon-copyright icon"></span>License: </strong>All articles on this blog are licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener nofollow noreferrer" target="_blank"><span class="icon-creative-commons"></span>BY-NC-SA</a> license agreement unless otherwise stated. Please indicate the source when reprinting!</p>
     <span class="icon-creative-commons article-copyright-bg"></span>
   </blockquote>
@@ -840,9 +838,9 @@
           url: "https://chq576.github.io/2026/03/28/DVWA/",
           excerpt: "",
           description: "",
-          stripContent: "Brute Force密码暴力破解 Command Injection命令连接符|符号|执行逻辑||—|—| |; |顺序执行，前面命令无论成功失败，后面都执行||&amp;amp; |后台任务符号，后台并行执行，前后命令同时跑||&amp;amp;&amp;amp; |前成功后执行| | | |管道符，前面输出作为后面输入，当它失败后，会执行另一条命令|||||前面失败，才执行后面| |\n&amp;#x2F;%0a |相当于回车，另起一行执行|  “,’反引号当一个命令被解析时，会先执行反引号之间的操作，如echo ‘ls",
+          stripContent: "Brute Force密码暴力破解 Command Injection 12345678命令连接符；：顺序执行，前面命令无论成功失败，后面都执行|&amp;amp;：后台任务符号，后台并行执行，前后命令同时跑|&amp;amp;&amp;amp;：前成功后执行 |：管道符，前面输出作为后面输入，当它失败后，会执行另一条命令||：前面失败，才执行后面\n/%0a：相当于回车，另起一行执行&amp;quot;双引号,&amp;#x27;单引号：当一个命令被解析时，会先执行反引号之间的操作，如echo &amp;#x27;ls /&amp;#x27;,这是",
           date: "Sat Mar 28 2026 11:03:33 GMT+0800",
-          updated: "Sat Mar 28 2026 13:53:29 GMT+0800",
+          updated: "Sat Mar 28 2026 14:00:15 GMT+0800",
           cover: "/images/cc.jpg",
         };
       </script>
